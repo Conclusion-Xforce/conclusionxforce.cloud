@@ -1,0 +1,155 @@
+---
+theme: hextra
+
+baseURL: "https://conclusionxforce.cloud/"
+title: "Conclusion Xforce TechBlog"
+author: "Conclusion Xforce"
+
+enableRobotsTXT: true
+# Parse Git commit
+enableGitInfo: false
+enableEmoji: false
+hasCJKLanguage: false
+
+# services:
+#   googleAnalytics:
+#     ID: G-MEASUREMENT_ID
+
+outputs:
+  home: [html, rss]
+  page: [html]
+  section: [html, rss]
+
+defaultContentLanguage: en
+languages:
+  en:
+    languageName: English
+    weight: 1
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+        enable: true
+
+enableInlineShortcodes: true
+
+menu:
+  main:
+    - identifier: blog
+      name: Blog
+      pageRef: /blog
+      weight: 1
+    - identifier: author
+      name: Authors
+      pageRef: /author
+      weight: 2
+    - identifier: about
+      name: About Xforce
+      pageRef: /about
+      weight: 3
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/conclusion-xforce/techblog"
+      params:
+        icon: github
+    - name: Website
+      weight: 6
+      url: "https://www.conclusionxforce.nl/"
+      params:
+        icon: globe
+
+  sidebar:
+    - identifier: more
+      name: More
+      params:
+        type: separator
+      weight: 1
+    - identifier: about
+      name: "About"
+      pageRef: "/about"
+      weight: 2
+    - identifier: hugoDocs
+      name: "Hugo Docs ↗"
+      url: "https://gohugo.io/documentation/"
+      weight: 3
+
+params:
+  description: A technical blog by Conclusion Xforce
+  keywords: conclusion, xforce, techblog, blog, conclusionxforce
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.png
+      # width: 40
+      # height: 20
+      # link: /
+    width: wide
+
+  page:
+    # full (100%), wide (90rem), normal (1280px)
+    width: normal
+
+  theme:
+    # light | dark | system
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: false
+    displayPoweredBy: false
+    width: normal
+
+  # Display the last modification date
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  # Search
+  # flexsearch is enabled by default
+  search:
+    enable: true
+    type: flexsearch
+
+    flexsearch:
+      # index page by: content | summary | heading | title
+      index: content
+      # full | forward | reverse | strict
+      # https://github.com/nextapps-de/flexsearch/#tokenizer-prefix-search
+      tokenize: forward
+
+  editURL:
+    enable: false
+    base: "https://github.com/conclusion-xforce/techblog/edit/main/content"
+
+  blog:
+    list:
+      displayTags: true
+      # date | lastmod | publishDate | title | weight
+      sortBy: date
+      sortOrder: desc # or "asc"
+    
+    article:
+      displayPagination: true
+
+  highlight:
+    copy:
+      enable: true
+      # hover | always
+      display: hover
+
+  comments:
+    enable: false
