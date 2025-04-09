@@ -2,12 +2,12 @@
 theme: hextra
 
 baseURL: "https://conclusionxforce.cloud/"
-title: "Conclusion Xforce TechBlog"
+title: "Conclusion Xforce Tech Playground"
 author: "Conclusion Xforce"
 
 enableRobotsTXT: true
 # Parse Git commit
-enableGitInfo: false
+enableGitInfo: true
 enableEmoji: false
 hasCJKLanguage: false
 
@@ -17,7 +17,7 @@ hasCJKLanguage: false
 
 outputs:
   home: [html, rss]
-  page: [html]
+  page: [html, rss]
   section: [html, rss]
 
 defaultContentLanguage: en
