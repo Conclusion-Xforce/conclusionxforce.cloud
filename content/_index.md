@@ -24,4 +24,3 @@ layout: hextra-home
 <div class="hx:mt-6"></div>
 
 Welcome to the Conclusion Xforce Tech Playground! This blog is a playground for our team to share knowledge, insights, and experiences in the world of technology. We cover a wide range of topics, including cloud computing, DevOps, security, and more.
-
