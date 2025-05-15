@@ -6,6 +6,13 @@ This repo contains the source code for the Conclusion Xforce techblog. To get st
 pip3 install -r requirements.txt
 ```
 
+As we use a Git submodule for the [Hextra theme](https://github.com/imfing/hextra/), run the following commands to fetch the source code:
+
+```bash
+git submodule init
+git submodule update
+```
+
 Then, run the following command to start the server:
 
 ```bash
@@ -16,15 +23,15 @@ This will start a local server at `http://localhost:1313/` where you can view th
 
 ## Contributing
 
-If you want to contribute to this project, feel free to fork the repository and create a pull request. You can add new articles, improve the theme, or fix any bugs you find. 
+If you want to contribute to this project, feel free to fork the repository and create a pull request. You can add new articles, improve the theme, or fix any bugs you find.
 
 Run the following command to add a new article:
 
 ```bash
-hugo new posts/my-new-article.md
+hugo new blog/My-Blog-Title
 ```
 
-This will create a new markdown file in the `content/posts` directory. You can then edit this file to add your content.
+This will create a new markdown file in the `content/blog` directory. You can then edit this file to add your content.
 
 ## License
 
