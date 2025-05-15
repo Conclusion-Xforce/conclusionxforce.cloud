@@ -33,6 +33,8 @@ hugo new blog/My-Blog-Title
 
 This will create a new markdown file in the `content/blog` directory. You can then edit this file to add your content.
 
+Want to add an author page? Just run `hugo new author/Your-Name` and don't forget to change your picture!
+
 ## License
 
 All content in this repository is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/). You are free to share and adapt the content, but you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not use the material for commercial purposes. See [LICENSE](./LICENSE) for the full license text.
