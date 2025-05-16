@@ -10,8 +10,6 @@ draft: false
 
 ![Connectivity in Kubernetes](./growtika-ZfVyuV8l7WU-unsplash.jpg)
 
-# ArgoCD Single Sign On based on AWS Cognito User Pools
-
 ## Introduction
 In this blog, I will show how you can connect ArgoCD and AWS Cognito via OIDC. It took me some time to figure out how to configure AWS CloudFormation and how to let AWS Cognito and ArgoCD work together. You can use my GitHub repository for a reference when you are struggeling yourself [1].
 
