@@ -8,7 +8,7 @@ tags: [AWS, Kubernetes, ArgoCD, OIDC]
 draft: false
 ---
 
-![Connectivity in Kubernetes](./images/growtika-ZfVyuV8l7WU-unsplash.jpg)
+![Connectivity in Kubernetes](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/growtika-ZfVyuV8l7WU-unsplash.jpg)
 
 # ArgoCD Single Sign On based on AWS Cognito User Pools
 
@@ -37,19 +37,19 @@ There are two places where OIDC is configured: it is configured in the config ma
 
 The argocd-cm config map looks like:
 
-![argocd-cm](./images/argocd-cm.png)
+![argocd-cm](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/argocd-cm.png)
 
 The __name__ is the name that you will see in the login screen of ArgoCD. It is not used in the communication with AWS Cognito.
 
-![argocd-login](./images/argocd-login.png)
+![argocd-login](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/argocd-login.png)
 
 The __issuer__ is the first part of the Token signing key URL in AWS Cognito: you have to skip the “.well-known/jwks.json” part.
 
-![argocd-user-pool](./images/argocd-user-pool.png)
+![argocd-user-pool](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/argocd-user-pool.png)
 
 You can find the __client ID__ and the __client secret__ by going to the App clients submenu in the Cognito User Pool. 
 
-![app-client](./images/app-client.png)
+![app-client](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/app-client.png)
 
 It is not possible to add the groups to the __requestedScopes__ in AWS Cognito. To get the groups we have to use the __requestedIDTokenClaims__ setting. More information about the way this should be configured for other OIDC providers can be found in the ArgoCD documentation [3].
 
@@ -58,15 +58,15 @@ The __redirectUrl__ is your ArgoCD URL with prefix _/auth/callback_. Don’t for
 ## ArgoCD Ephemeral Access Extension
 All people of an OIDC group can request a role when this is configured within the Ephemeral Access Extension, by clicking on the permission button. When the permissions are granted, the role is assigned to just the person who requests the role. This is done by assigning the role to the email address, not to the group.
 
-![image-role-in-argocd](./images/image-role-in-argocd.png)
+![image-role-in-argocd](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/image-role-in-argocd.png)
 
 To connect the email address of the user to his OpenID, the email address should be added to the scope of the RBAC configuration:
 
-![argocd-rbac-cm](./images/argocd-rbac-cm.png)
+![argocd-rbac-cm](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/argocd-rbac-cm.png)
 
 By doing this, you will see that a user has now an extra group in ArgoCD: the groups that were assigned within AWS Cognito and ones own email address.
 
-![argocd-userinfo](./images/argocd-userinfo.png)
+![argocd-userinfo](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/argocd-userinfo.png)
 
 ## AWS CloudFormation
 AWS CloudFormation can be used to deploy AWS resources using CloudFormation templates.
@@ -75,18 +75,18 @@ In this example I’m using AWS CloudFormation to deploy an AWS Cognito User Poo
 
 You can use this CloudFormation script yourself to deploy this example[1] to your own AWS environment. To use it, you first have to create an empty AWS S3 bucket with the name <consultant-name>-<profile-name> (f.e. frederique-xforce-sandbox1). Change the variables in the `start-k8s.sh` and `stop-k8s.sh` scripts as well. You also need an certificate ID from AWS Certificate Manager to make ArgoCD access via https possible. In my case I used a star certificate for __*.sandbox1.prutsforce.nl__.
 
-![AWS-certificate-manager-star-certificate](./images/acm-certificate.png)
+![AWS-certificate-manager-star-certificate](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/acm-certificate.png)
 
 ## Configuring AWS Cognito in CloudFormation
 It took me quite some time to configure AWS Cognito in the AWS CloudFormation template: when I tested the login page via `User pool > App client > View login page`, I got an error message “Login pages unavailable, Please contact an administrator”. 
 
-![login-pages-unavailable](./images/login-pages-unavailable.png)
+![login-pages-unavailable](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/login-pages-unavailable.png)
 
 After a few hours I discovered that I forgot to add a __AWS::Cognito::ManagedLoginBranding__ resource. When I added this resource, the login page started working.
 
 My definition of the user pool, user pool client and login branding resources are:
 
-![user-pool-part-cloudformation](./images/user-pool-part-cloudformation.png)
+![user-pool-part-cloudformation](/content/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/images/user-pool-part-cloudformation.png)
 
 ## Conclusion
 It can take some time to configure OIDC in an application. In this example I showed how to use AWS Cognito as an OIDC provider for ArgoCD. I also wrote a CloudFormation template to get a working environment. I hope you enjoyed reading this blog as much as I enjoyed writing it!
