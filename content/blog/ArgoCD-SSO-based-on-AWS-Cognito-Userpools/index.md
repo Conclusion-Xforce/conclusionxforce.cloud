@@ -58,7 +58,7 @@ It is not possible to add the groups to the __requestedScopes__ in AWS Cognito. 
 
 The __redirectUrl__ is your ArgoCD URL with prefix _/auth/callback_. Don’t forget to add the __url__-part just below the oidc.config definition. The information about the groups are retrieved using the GetUserInfo API call. This is configured by enabling the __getUserInfo__ parameter. When you forget to do so, you will get the error __Failed to query provider "ISSUER": Get "ISSUER/.well-known/openid-configuration": unsupported protocol scheme ""__ when you click the Cognito button in the logon screen of ArgoCD.
 
-## ArgoCD Ephemeral Access Extension
+## Effects in ArgoCD Ephemeral Access Extension
 
 All people of an OIDC group can request a role when this is configured within the Ephemeral Access Extension, by clicking on the permission button. When the permissions are granted, the role is assigned to just the person who requests the role. This is done by assigning the role to the email address, not to the group.
 
