@@ -48,7 +48,8 @@ forget to change your picture!
 
 ## License
 
-All content in this repository is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+All content in this repository is licensed under the
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 You are free to share and adapt the content, but you must give appropriate
 credit, provide a link to the license, and indicate if changes were made.
 You may not use the material for commercial purposes. See [LICENSE](./LICENSE)
