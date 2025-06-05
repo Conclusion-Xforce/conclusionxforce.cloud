@@ -79,11 +79,24 @@ In the optional steps of the image creation, you can insert one of your own
 activation keys so the WSL is automatically registered at Red Hat (Image Builder
 will attach it to your organization). You can further tweak the WSL image
 blueprint to your liking, but leave the OpenSCAP and Filesystem configuration
-on its defaults. When all configuration is done, the blueprint can be saved and
-the WSL image can be created. The result is a tarball (.tar.gz) which is ready
-for download for a limited period of time.
+on its defaults. A new feature in Image Builder is the option to directly
+create a user account within the image. This is especially useful for the WSL
+image, as otherwise you would always work as 'root' in the WSL. When all
+configuration is done, the blueprint can be saved and the WSL image can be
+created. The result is a tarball (.tar.gz) which is ready for download for a
+limited period of time.
 
 ## Creating the WSL
 
 Once the WSL image is created, it's time to create the actual WSL instance on
-your Windows host.
+your Windows host. When the image file is downloaded on the Windows host, it
+can be imported into WSL with `wsl --import <DistroName> <DestinationDir>
+<FileName>` where:
+- DistroName is the name of the distribution in your WSL setup
+- DestinationDir is the path where the WSL should have its persistent storage
+- FileName is the name of the WSL image file
+
+You can directly specify the compressed tar file (.tar.gz); there is no need
+to first decompresss. Next you can start the WSL with `wsl -d <DistroName>`. If
+you created a user account during the image creation process, you can directly
+connect to the wsl as that user with `wsl -d <DistroName> -u <UserName>`.
