@@ -153,8 +153,8 @@ a star certificate for __*.sandbox1.prutsforce.nl__.
 
 It took me quite some time to configure AWS Cognito in the AWS CloudFormation
 template: when I tested the login page via `User pool > App client > View login`
-`page`, I got an error message "_Login pages unavailable, Please contact an_
-_administrator_".
+`page`, I got an error message
+"_Login pages unavailable, Please contact an administrator_".
 
 ![login-pages-unavailable](./login-pages-unavailable.png)
 
