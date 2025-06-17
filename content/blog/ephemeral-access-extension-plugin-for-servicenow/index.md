@@ -1,14 +1,16 @@
 ---
-title: The ServiceNow plugin for the ArgoCD Ephemeral Access Extension
-subtitle: Least Privileged access for ArgoCD in production environments
+title: Least Privileged access in ArgoCD
+subtitle: ArgoCD Ephemeral Access Extension for ServiceNow
 description: How to connect the ArgoCD Ephemeral Access Extension to ServiceNow
-authors: [Frederique Retsema]
-date: '2025-06-24'
+authors: ["Frederique Retsema"]
+date: '2025-06-17'
 tags: [Kubernetes, ArgoCD, Security, EphemeralAccess, LeastPrivilege]
 draft: false
 ---
 
 ![ArgoCD Ephemeral Access Extension for ServiceNow](./argocd-ephemeral-access-extension-plugin-for-servicenow.png)
+
+## Introduction
 
 In my last blog, I already mentioned the ArgoCD Ephemeral Access Extension
 briefly. I was very excited about it when I learned from it on Kubecon: I
@@ -140,7 +142,7 @@ because the difference between the date and time in the message are leading,
 not the time in the "Expired" field that is shown by the Ephemeral Access
 Extension.
 
-![Access granted based on change](./ArgoCD-AccessGrantedChange.png)
+![Access granted based on change](./argocd-access-granted-change.png)
 
 Unfortunately, the Ephemeral Access Extension doesn't give a nice message when
 the request is denied. One has to search in the AccessRequests within
@@ -153,7 +155,7 @@ When the request is granted, the ServiceNow plugin will also write a note in
 the change that the request is granted. In this way, everyone who is interested
 in the change can see who was granted access and for how long.
 
-![Access granted based on exclusion role](./ArgoCD-AccessGrantedChange.png)
+![ServiceNow change notes](./servicenow-change-notes.png)
 
 ### Exclusion roles
 
@@ -165,7 +167,7 @@ and changes cannot be checked. For these use cases, I created "Exclusion Roles":
 roles of the Ephemeral Access Controller that will not look at CIs and changes,
 but will immediately grant access.
 
-![Access granted based on exclusion role](./ArgoCD-AccessGrantedExclusionRole.png)
+![Access granted based on exclusion role](./argocd-access-granted-exclusion-role.png)
 
 You might use this for incident managers, who coordinate an incident and add
 administrators to the incidentmanager group on the moment that these issues
@@ -174,12 +176,12 @@ Service Now, and when not to do so. It shouldn't become a "normal way of
 working" to use this mechanism, the plugin will give a warning when someone
 gets access via an exclusion role:
 
-![Warning for use of exclusion role](./ArgoCD-WarningForExclusionRole.png)
+![Warning for use of exclusion role](./argocd-warning-message-for-exclusion-role.png)
 
 when someone is granted permission based on a change, this information has INFO
 severity:
 
-![Info for access grant based on change](./ArgoCD-InfoMessageForChange.png)
+![Info for access grant based on change](./argocd-info-message-for-change.png)
 
 You can see here that the timezone on the server is different from the timezone
 in the UI. This isn't an issue. It is, however, important to use the same
@@ -281,25 +283,25 @@ existing group `Application`, but it might be better to create a new group
 `Kubernetes Application`. Use the hamburger menu on the upper left and
 then search for __CI Class Manager__.
 
-![CI Class Manager](./ServiceNow-CIClassManager.png)
+![CI Class Manager](./servicenow-ci-class-manager.png)
 
 Click on the button __Hierarchy__.
 
-![CI Class Manager Hierarchy](./ServiceNow-CIClassManagerHierarchy.png)
+![CI Class Manager Hierarchy](./servicenow-ci-class-manager-hierarchy.png)
 
 Hover over the __Configuration Item__ item in the menu and click on the
 hamburger menu.
 
-![Configuration Item hamburger menu](./ServiceNow-CIClassManagerHierarchy-CIMenu.png)
+![Configuration Item hamburger menu](./servicenow-ci-class-manager-hierarchy-ci-menu.png)
 
 Click in the menu on __Add child class__.
 
-![Configuration Item hamburger menu](./ServiceNow-CIClassManagerHierarchy-AddChildClass.png)
+![Configuration Item hamburger menu](./servicenow-ci-class-manager-hierarchy-add-child-class.png)
 
 The `Display Name` is mandatory and is the base for the internal name within
 ServiceNow:
 
-![Basic Info](./ServiceNow-CIClassManagerHierarchy-AddChildClass-OnlyBasicInformation.png)
+![Basic Info](./servicenow-ci-class-manager-hierarchy-add-child-class-only-basic-information.png)
 
 The rest of the fields are not required, click 4 times on __"Next"__, then
 __"Done"__.
@@ -307,7 +309,7 @@ __"Done"__.
 In the left menu, click on __CI List__, then on __New__. Give your application
 a name, for example __app-demoapp__. Click then on Submit.
 
-![New Kubernetes application](./ServiceNow-CIList-app-demoappWithStatusInstalled.png)
+![New Kubernetes application](./servicenow-ci-list-app-demoapp-with-status-installed.png)
 
 We now have a Kubernetes application in the correct the Installed state. You
 can change this if you like to see how the plugin behaves on different
@@ -321,14 +323,14 @@ After that, select the menu option __Models__. You can see here the options to
 create an emergency change or a normal change. Select a __Normal__ change for
 now.
 
-![Normal Change](./ServiceNow-Change-ITILMode1NormalChange.png)
+![Normal Change](./servicenow-change-itil-mode-1-normal-change.png)
 
 Change the field Configuration item to __app-demoapp__ and select tab
 __Schedule__ to change the start and end date of the change. Use for example a
 timeframe from more-or-less now to a few hours later. Click on Submit after
 that, and go in the main hamburger menu to Change > __Open__.
 
-![New change](./ServiceNow-Change-BasicFieldsInclStartAndEndDate.png)
+![New change](./servicenow-change-basic-fields-incl-start-and-end-date.png)
 
 You can find your change in this list, when you follow along in a new developer
 environment this change will have the number CHG0030001.
@@ -345,11 +347,11 @@ is now waiting for approval: select the "Approvers (5)" tab on the lower part
 of the screen and hover over the first name. Click on the __check box__ on the
 left to let (in my case) Arya Hajarha approve your change.
 
-![Change approvers](./ServiceNow-ChangeApprovers.png)
+![Change approvers](./servicenow-change-approvers.png)
 
 Use the "Actions on selected rows" to approve the change.
 
-![Approve change](./ServiceNow-ChangeApproversApprove.png)
+![Approve change](./servicenow-change-approvers-approve.png)
 
 The state is changing to state Authorize, it now has to be approved by someone
 of the CAB Approval group. Follow the same procedure again to let the first
