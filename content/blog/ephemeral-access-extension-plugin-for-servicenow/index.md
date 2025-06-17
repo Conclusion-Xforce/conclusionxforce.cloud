@@ -139,7 +139,7 @@ automatically).
 When the AccessRequest is granted, I used Markdown language to make fields like
 the change number and the end date and the duration bold. This is important
 because the difference between the date and time in the message are leading,
-not the time in the "Expired" field that is shown by the Ephemeral Access
+not the time in the "Expires" field that is shown by the Ephemeral Access
 Extension.
 
 ![Access granted based on change](./argocd-access-granted-change.png)
@@ -298,8 +298,8 @@ Click in the menu on __Add child class__.
 
 ![Configuration Item hamburger menu](./servicenow-ci-class-manager-hierarchy-add-child-class.png)
 
-The `Display Name` is mandatory and is the base for the internal name within
-ServiceNow:
+The `Display Name` is mandatory and is the base for the internal table name
+within ServiceNow:
 
 ![Basic Info](./servicenow-ci-class-manager-hierarchy-add-child-class-only-basic-information.png)
 
