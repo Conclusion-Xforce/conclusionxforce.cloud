@@ -364,7 +364,7 @@ Ephemeral Access Controller Plugin to allow extra permissions.
 ## Links
 
 [1] Github repository ServiceNow Plugin:
-<https://github.com/FrederiqueRetsema/argocd-ephemeral-access-plugin-servicenow>
+<https://github.com/argoproj-labs/argocd-ephemeral-access-plugin-servicenow>
 [2] Github repository Ephemeral Access Extension:
 <https://github.com/argoproj-labs/argocd-ephemeral-access>  
 [3] Developer environment ServiceNow:
