@@ -3,7 +3,7 @@ title: Least Privileged access in ArgoCD
 subtitle: ArgoCD Ephemeral Access Extension for ServiceNow
 description: How to connect the ArgoCD Ephemeral Access Extension to ServiceNow
 authors: ["Frederique Retsema"]
-date: '2025-06-17'
+date: '2025-06-24'
 tags: [Kubernetes, ArgoCD, Security, EphemeralAccess, LeastPrivilege]
 draft: false
 ---
