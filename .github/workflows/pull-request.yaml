@@ -1,0 +1,15 @@
+name: pull-request
+
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  lint_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Lint markdown files
+      uses: DavidAnson/markdownlint-cli2-action@v20
+      with:
+        globs: '**/[^_]*.md'
+ 
