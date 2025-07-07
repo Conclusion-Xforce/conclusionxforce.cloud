@@ -12,7 +12,7 @@ draft: false
 
 We have all been there.
 You finally found an operator to deploy your favorite application.
-unfortuneatly, the operator only manages the deployment not the
+Unfortunately, the operator only manages the deployment not the
 actual configuration. In this specific case I want to manage Quay (container registry)
 and its organizations declaratively to embed it in the onboarding template for teams.
 Having a sysadmin background the task of writing a GO operator to manage
@@ -21,7 +21,7 @@ Luckily the [Operator SDK](https://sdk.operatorframework.io/) also supports Ansi
 
 ## The tool
 
-![operator-types](./operator-types.png)
+![Diagram of operator development options](./operator-types.png)
 Ref: `https://sdk.operatorframework.io/`
 
 "The Operator SDK provides the tools to build, test, and package Operators."
@@ -35,7 +35,7 @@ instead of writing them from scratch.
 
 ## The solution
 
-![the-solution](./the-solution.jpg)
+![Overview of the Ansible operator solution](./the-solution.jpg)
 
 ### Prerequisites
 
@@ -332,7 +332,7 @@ or run it on your workstation)
 
     12.2 Check the operator in the OpenShift Console
 
-    ![console-picture](./console-picture.jpg)
+    ![Operator status in OpenShift console](./console-picture.jpg)
 
 13. Deploy your first Quay organization.
 
@@ -356,18 +356,18 @@ or run it on your workstation)
     14.1 Check the resource using the OpenShift CLI.
 
     ```bash
-    oc get quayorganization quay-organization-sample -o yaml
+    oc get quayorganization quayorganization-sample -o yaml
     ```
 
     14.2 Check in Quay whether the new organization exists in Quay
 
-    ![quay-organization](./quay-organization.jpg)
+    ![New organization visible in Quay UI](./quay-organization.jpg)
 
 15. Congratulations you have created your first Ansible based operator!
 
 ## The end
 
-Combining Ansilble and operators provides the best of both worlds.
+Combining Ansible and operators provides the best of both worlds.
 You can leverage the ecosystem of Ansible to manage
 your application in a cloud native way.
 The example of the quay configuration operator needs a lot of finetuning.
