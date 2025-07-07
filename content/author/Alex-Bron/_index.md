@@ -7,7 +7,7 @@ author: Alex Bron
 
 ## whoami
 
-Hi there! I'm Alex, a seasoned automation consultant at [Conclusion Xforce](https://www.conclusionxforce.nl/). Next to that I am the Technical Coach for our Automation (Ansible Automation Platform) focus group, and as a Red Hat Certified Instructor I deliver different Red Hat trainings on a regular base.
+Hi there! I'm Alex, a seasoned automation consultant at [Conclusion Xforce](https://www.conclusionxforce.nl/). Next to that I am the Technical Coach for our Automation (Ansible Automation Platform) focus group, and as a Red Hat Certified Instructor I deliver different Red Hat trainings on a regular basis.
 
 ## Linux
 
