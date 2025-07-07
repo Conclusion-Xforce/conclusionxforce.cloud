@@ -12,9 +12,7 @@ draft: false
 ## Introduction
 
 This blog explains how you can create your own WSL image based on Red Hat
-Enterprise Linux, and why you would want to use WSL in the first place. 
-
-<!-- I will also share the Github repository that holds the Ansible code to generate a custom RHEL WSL image in an automated way. -->
+Enterprise Linux, and why you would want to use WSL in the first place.
 
 ## What is WSL?
 
@@ -29,7 +27,7 @@ You can start your Linux distro from the Windows command line (cmd or
 powershell) by typing `wsl --distribution <DistroName>`. Next you'll end up in
 the login shell of your Distro. WSL has created a NAT interface for you so your
 Linux distro has network connectivity to the outside world. All Windows drives
-are mounted as /mnt/<DriveLetter>.
+are mounted as `/mnt/<DriveLetter>`.
 
 Why would you need such a WSL? Suppose you are writing ansible playbooks. You
 can use VS Code, as it has nice code editing features and an ansible and yaml
@@ -94,6 +92,7 @@ Once the WSL image is created, it's time to create the actual WSL instance on
 your Windows host. When the image file is downloaded on the Windows host, it
 can be imported into WSL with `wsl --import <DistroName> <DestinationDir>
 <FileName>` where:
+
 - DistroName is the name of the distribution in your WSL setup
 - DestinationDir is the path where the WSL should have its persistent storage
 - FileName is the name of the WSL image file
@@ -102,5 +101,5 @@ You can directly specify the compressed tar file (.tar.gz); there is no need
 to first decompress. Next you can start the WSL with `wsl -d <DistroName>`. If
 you created a user account during the image creation process, you can directly
 connect to the wsl as that user with `wsl -d <DistroName> -u <UserName>`. If you
-always want to connect as that user, you can make it the default user with 
+always want to connect as that user, you can make it the default user with
 `wsl --manage <DistroName> --set-default-user <UserName>`.
