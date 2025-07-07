@@ -41,7 +41,7 @@ present in the WSL image, like ansible-lint etc.
 
 ![VS Code with WSL](vscode-wsl.png)
 
-So write your ansible code inside your WSL image using the Remote::WSL
+So write your ansible code inside your WSL image using the Remote - WSL
 extension, save the file and see ansible-lint directly verify your file in the
 VS Code editor window! And if you would want to run the code with
 ansible-navigator, you could even use the same Execution Environment in this WSL
