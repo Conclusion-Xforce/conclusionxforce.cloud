@@ -22,7 +22,7 @@ The Windows Subsystem for Linux (which could be considered to be a Linux
 subsystem for Windows) is a Windows feature which allows you to run a Linux
 distribution within your Windows setup. It uses a Microsoft-provided Linux
 kernel and tight integration with the Windows host operating system. Microsoft
-offers several distribution via its Marketplace, but Red Hat Enterprise Linux
+offers several distributions via its Marketplace, but Red Hat Enterprise Linux
 is not one of them.
 
 You can start your Linux distro from the Windows command line (cmd or
