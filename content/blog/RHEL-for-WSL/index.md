@@ -55,7 +55,9 @@ bit of help from Google. But not anymore: at Red Hat Summit 2025 it's officially
 announced that you can create WSL images for RHEL 8, 9 and 10 using Red Hat's
 image builder tool. The downside: there's still no RHEL image in the Microsoft
 Marketplace (but there is now a Fedora 42 image available). However using the
-image builder you can really tweak the image to suit your needs. Obviously, as
+image builder you can really tweak the image to suit your needs. At the same
+time Red Hat offers WSL2 images in the download section of [Red Hat Enterprise
+Linux](https://access.redhat.com/downloads/content/479/). Obviously, as
 it is RHEL, you will need a RHEL subscription in order to use the RHEL WSL
 image. A developer subscription (free to use, valid for 1 year, available from
 [Red Hat](https://developers.redhat.com)) will work just fine.
@@ -99,4 +101,6 @@ can be imported into WSL with `wsl --import <DistroName> <DestinationDir>
 You can directly specify the compressed tar file (.tar.gz); there is no need
 to first decompress. Next you can start the WSL with `wsl -d <DistroName>`. If
 you created a user account during the image creation process, you can directly
-connect to the wsl as that user with `wsl -d <DistroName> -u <UserName>`.
+connect to the wsl as that user with `wsl -d <DistroName> -u <UserName>`. If you
+always want to connect as that user, you can make it the default user with 
+`wsl --manage <DistroName> --set-default-user <UserName>`.
