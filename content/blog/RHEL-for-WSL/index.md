@@ -97,6 +97,6 @@ can be imported into WSL with `wsl --import <DistroName> <DestinationDir>
 - FileName is the name of the WSL image file
 
 You can directly specify the compressed tar file (.tar.gz); there is no need
-to first decompresss. Next you can start the WSL with `wsl -d <DistroName>`. If
+to first decompress. Next you can start the WSL with `wsl -d <DistroName>`. If
 you created a user account during the image creation process, you can directly
 connect to the wsl as that user with `wsl -d <DistroName> -u <UserName>`.
