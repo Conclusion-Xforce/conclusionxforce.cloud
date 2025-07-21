@@ -33,8 +33,8 @@ How are these future values predicted? Depending on the variance in the data, ei
 Ref: `https://www.dynatrace.com/platform/artificial-intelligence/`
 
 Why have I always been hyped about the forecasting feature? Because it can predict any metric which you want, no matter the metric type , as long as enough datapoints are available. This can be a great feature for many industries. For example, imagine the Dutch “zorgpiek”, when the new health care premium is announced and the health insurance companies are facing high traffic on their applications. Here, we could even predict the throughput/traffic or any other interesting metrics for the upcoming 4 years, if we stick to an interval of 1 value per day (there is a maximum of 600 data points which can be predicted). One of many interesting use cases to explore…
-Nevertheless, it can seem rather taxing to ask teams to constantly check the new predictions in their dashboards or re-run the predictive DQL queries stored in a notebook. This is where automation, and another great Dynatrace app called “workflows” comes into play. 
-We can build a workflow which automatically executes the Davis analyzer prediction task and, based on the outcome, creates a problem in Dynatrace. The workflow will start with a fixed time or time interval trigger which we could set to every 24 hours or once per week on a specific day and time. At that moment in time, the workflow with all its tasks will be executed. 
+Nevertheless, it can seem rather taxing to ask teams to constantly check the new predictions in their dashboards or re-run the predictive DQL queries stored in a notebook. This is where automation, and another great Dynatrace app called “workflows” comes into play.
+We can build a workflow which automatically executes the Davis analyzer prediction task and, based on the outcome, creates a problem in Dynatrace. The workflow will start with a fixed time or time interval trigger which we could set to every 24 hours or once per week on a specific day and time. At that moment in time, the workflow with all its tasks will be executed.
 
 ![Host Memory Worflow and Problem](./Host_Memory_Problem.png)
 
@@ -42,8 +42,8 @@ In the second part of the workflow, the predict_memory_usage task, is executed. 
 
 ![predict_memory_usage](./predict_memory_usage.png)
 
-After this task, all the future points for all hosts in the environment are predicted. To raise a Dynatrace problems, two more workflow tasks, executing JavaScript code, are needed. 
-The check_prediction task compares the predicted data points with a set thresholds, above which a Dynatrace problem should be created. In the source code, we can see that I have chosen a threshold of 80, meaning that only predicted values above 80% memory usage should be considered a violation and should lead in the creation of a problem during the final workflow task. In the source code we can also play futher with what is considered a violation. Should the predicted value be larger or smaller than the threshold? Should a violation be detected if only the final predicted value of the timeseries is above the threshold or if the average of the predicted array of values is above the threshold?  
+After this task, all the future points for all hosts in the environment are predicted. To raise a Dynatrace problems, two more workflow tasks, executing JavaScript code, are needed.
+The check_prediction task compares the predicted data points with a set thresholds, above which a Dynatrace problem should be created. In the source code, we can see that I have chosen a threshold of 80, meaning that only predicted values above 80% memory usage should be considered a violation and should lead in the creation of a problem during the final workflow task. In the source code we can also play futher with what is considered a violation. Should the predicted value be larger or smaller than the threshold? Should a violation be detected if only the final predicted value of the timeseries is above the threshold or if the average of the predicted array of values is above the threshold?
 
 ![check_prediction](./check_prediction.png)
 
