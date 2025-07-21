@@ -58,5 +58,3 @@ We could even create a second “simple workflow” (includes only a trigger and
 ![Teams Workflow](./Teams_Workflow.png)
 
 To sum up this blogpost, especially the combination of automation (with workflows) and forecasting (with DavisAI) can be a gamechanger for stakeholders and can even be very fun to set up. I really hope that this blogpost inspired you, to play around with dashboards, the Davis AI functionalities and the workflows app in your own or the Dynatrace Playground environment.
-
-
