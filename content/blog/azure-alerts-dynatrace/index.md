@@ -232,7 +232,7 @@ Now, the lines with tags in the log line become for example:
     ...
       "alert.tag.goal": "Test Dynatrace",
       "alert.tag.name": "Frederique",
-      "alert.tag.tagwithspaces": "Spacy"
+      "alert.tag.tagwithspaces": "Spacy",
       "resourcegroup.tag.goal": "ResourceGroup Test Dynatrace"
     ...
 }
