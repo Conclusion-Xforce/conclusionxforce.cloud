@@ -1,7 +1,7 @@
 ---
 title: Azure Monitor Alerts and Dynatrace
 subtitle: Get more information from Azure Monitor Alerts to Dynatrace
-description: In this blog you can read how to connect Azure Monitor Alerts with Dynatrace Logs via the Dynatrace Log Ingest API.
+description: In this blog you can read how to connect Azure Monitor Alerts with Dynatrace Logs via Azure Functions and the Dynatrace Log Ingest API.
 authors: ["Frederique Retsema"]
 date: '2025-08-26'
 tags: ["Dynatrace", "Azure", "Alerts"]
