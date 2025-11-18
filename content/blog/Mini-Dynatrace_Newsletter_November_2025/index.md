@@ -120,7 +120,9 @@ If you want to, you can use the Dynatrace playground to test the queries:
 First, we create two metric timeseries:
 
 ```dql
-timeseries {response_time_p99 = percentile(dt.service.request.response_time, 99), request_count = sum(dt.service.request.count)}, interval: 1m, by:{dt.entity.service}, union:true
+timeseries {response_time_p99 = percentile(dt.service.request.response_time, 99),
+request_count = sum(dt.service.request.count)},
+interval: 1m, by:{dt.entity.service}, union:true
 |fieldsAdd entityName(dt.entity.service)
 |filter dt.entity.service == "SERVICE-1234567891011"
 //enter your own service ID here
@@ -140,7 +142,8 @@ The following commands will convert the timeseries to single records:
 
 ```dql
 // Expanding timeseries to single records
-|fields all = iCollectArray(record(response_time_p99= response_time_p99[],request_count = request_count[])),dt.entity.service.name
+|fields all = iCollectArray(record(response_time_p99= response_time_p99[],
+request_count = request_count[])),dt.entity.service.name
 |expand all
 |fieldsAdd request_count = all[request_count], response_time_p99 = all[response_time_p99]
 |fieldsRemove all
@@ -173,11 +176,12 @@ higher response time).
 Let's check if the visual impression of a positive correlation between the
 "slowest 1% requests" response time and the request count actually exists.
 For that, we will add the `|summarize correlation()` command.
- 
+
  ```dql
 //Pearson correlation coefficient
 |summarize correlation(request_count,response_time_p99)
 ```
+
 The result is indeed a positive relationship:
 
 ![Pearson Correlation Coefficient](correlationcoefficient.png)
@@ -196,7 +200,8 @@ so the link from the DQL tile does not work yet:
 
 ![Documentation Scatterplot unavailable](docslinkscatterplot.png)
 
-Furthermore, it is not possible yet to simply add two timeseries and turn them into a scatterplot with a normal metrics tile
+Furthermore, it is not possible yet to simply add two timeseries and
+turn them into a scatterplot with a normal metrics tile
 or DQL tile without intermediate steps
 (see the error message in this newsletter).
 That could be improved in the future to make
@@ -204,8 +209,8 @@ this feature more accessible to everyone.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Okay, why would I call this a mini newsletter?
-(I mean, this was quite a long article...)?
+Okay, why would I call this a mini newsletter? I mean, this
+ was quite a long article...?
 This was only a sub-set of all the new features published in the last weeks.
 In the release notes, you can find even more features,
 but mostly with only a few details and little description.
