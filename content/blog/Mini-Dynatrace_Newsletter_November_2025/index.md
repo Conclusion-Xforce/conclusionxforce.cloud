@@ -63,15 +63,15 @@ to upvote and support:
 __When?__ since 21 oct 2025, SaaS version
 1.326 (auto-update, so if you have SaaS this feature is
 available automatically)
-__Summary (from the release notes):__ "You can now use 
+__Summary (from the release notes):__ "You can now use
 scatterplots in Dashboards and Notebooks
 to visualize data relationships and identify patterns,
 such as correlations between response time and request count.
 This new visualization helps you analyze metrics more
  effectively and uncover insights
 in your observability data."
-__Mini Demo:__ 
-Let us start off easy with a scatterplot of one metric (y-axis)
+__Mini Demo:__ Let us start off easy with
+a scatterplot of one metric (y-axis)
 against the timeframe (x-axis), so a metric over time.
 This is a nice alternative to line graphs.
 
@@ -91,7 +91,7 @@ which is
 supposed to show all datapoints,
 but we can avoid it by adding an interval ourselves
 Like that:
- 
+
 ```dql
 timeseries avg(dt.service.request.response_time), interval:1m, by:{dt.entity.service}
 |fieldsAdd entityName(dt.entity.service)
@@ -99,7 +99,7 @@ timeseries avg(dt.service.request.response_time), interval:1m, by:{dt.entity.ser
 ```
 
 ![Response Time Scatterplot bigger timeframe](responsetimescatterplotlarge.png)
- 
+
 Now let's get started on the interesting part, with two different
 "metric variables" on the x-axis and the y-axis.
 A small warning/disclaimer: If you create two metrics as a line
@@ -137,7 +137,7 @@ so feel free to follow my steps.
 
 We need to look at a record list, and no longer at two timeseries.
 The following commands will convert the timeseries to single records:
- 
+
 ```dql
 // Expanding timeseries to single records
 |fields all = iCollectArray(record(response_time_p99= response_time_p99[],request_count = request_count[])),dt.entity.service.name
@@ -181,8 +181,9 @@ For that, we will add the `|summarize correlation()` command.
 The result is indeed a positive relationship:
 
 ![Pearson Correlation Coefficient](correlationcoefficient.png)
- 
-`|summarize correlation()` already exists for some time, but does fit the use case here, that's why I included it in the newsletter.
+
+`|summarize correlation()` already exists for some time, but does fit
+the use case here, that's why I included it in the newsletter.
 __My 2cts:__ Mostly happy.
 More dashboarding options and more data science is always a good step forward.
 I do miss the option to add a trendline (see the example with R).
