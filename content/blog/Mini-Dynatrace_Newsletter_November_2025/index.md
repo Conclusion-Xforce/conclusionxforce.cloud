@@ -13,7 +13,6 @@ more frequently - seasoned with my personal opinions, ideas and practical contex
 So, welcome to my new and very first Mini Dynatrace Newsletter!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-
 ## Settings:
 
 ## Holiday-aware baseline modification
