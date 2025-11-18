@@ -9,16 +9,18 @@ draft: false
 ---
 I will try to share and highlight new relevant Dynatrace
 features (mostly from the Dynatrace release notes)
-more frequently - seasoned with my personal opinions, ideas and practical context. 
+more frequently - seasoned with my personal 
+opinions, ideas and practical context.
 So, welcome to my new and very first Mini Dynatrace Newsletter!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-## Settings:
 
-## Holiday-aware baseline modification
+## Settings - Holiday-aware baseline modification
 
-__When?__ available since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
-__Summary (from the release notes):__ "Public holidays have a significant impact on the usage behavior of services and applications.
+__When?__ available since 21 oct 2025, SaaS version 1.326 
+(auto-update, so if you have SaaS this feature is available automatically)
+__Summary (from the release notes):__ "Public holidays have a significant impact
+on the usage behavior of services and applications.
 These deviations also affect the accuracy of the service and application baseline.
 To minimize the risk of false positive alerts, specific public holidays are
 systematically excluded from the service baseline and application baseline.
@@ -45,9 +47,7 @@ have created a product idea already.
 If you have a similar view as me and them on the new feature, feel free to upvote and support:
 [Dynatrace Community - Define distinct type of days for Holidays-aware baseline](https://community.dynatrace.com/t5/Product-ideas/Define-distinct-type-of-days-Holiday-aware-baseline/idi-p/262812)
 
-## DQL/Dashboards/Notebooks:
-
-## Visualize data relationships with the new Scatterplot visualization
+## DQL/Dashboards/Notebooks - Visualize data relationships with the new Scatterplot visualization
 
 __When?__ since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
 __Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks
