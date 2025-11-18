@@ -7,39 +7,47 @@ date: '2025-11-18'
 tags: [Observability, Dynatrace, Releasenotes, Newsletter]
 draft: false
 ---
-I will try to share and highlight new relevant Dynatrace features (mostly from the Dynatrace release notes) more frequently - seasoned with my personal opinions, ideas and practical context. 
+I will try to share and highlight new relevant Dynatrace features (mostly from the Dynatrace release notes)
+more frequently - seasoned with my personal opinions, ideas and practical context. 
 So, welcome to my new and very first Mini Dynatrace Newsletter!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-## 1. Settings:
+
+## Settings:
 
 ## Holiday-aware baseline modification
 
 __When?__ available since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
 __Summary (from the release notes):__ "Public holidays have a significant impact on the usage behavior of services and applications.
-These deviations also affect the accuracy of the service and application baseline. To minimize the risk of false positive alerts, specific public holidays are systematically excluded from the service baseline and application baseline.
+These deviations also affect the accuracy of the service and application baseline.
+To minimize the risk of false positive alerts, specific public holidays are systematically excluded from the service baseline and application baseline.
 Excluded public holidays are: New Year, Easter, Thanksgiving, Black Friday and Christmas.
 This setting is enabled by default.
 To disable the feature, go to Settings > Anomaly Detection > Holiday-aware baseline modification."
-__Details:__ The holiday-aware baseline modification now is a default setting - applied immediately after the release of the SaaS 1.326 version (yes, you and/or your customers are already using it in case you're on SaaS).
+__Details:__ The holiday-aware baseline modification now is a default setting - applied
+immediately after the release of the SaaS 1.326 version
+(yes, you and/or your customers are already using it in case you're on SaaS).
 ![Settings - Holiday-aware baseline modification](holidaybaselinemodification.png)
-This means, that during holidays, there won't be a baseline created for any metric - nevertheless, the data will still be stored, just not as the new reference baseline.
+This means, that during holidays, there won't be a baseline created for any metric - nevertheless, the data
+will still be stored, just not as the new reference baseline.
 A week after the holiday, the holiday will not be used as a reference point for performance.
 The logic slightly resembles the logic of the "Frequent Issue Detection", as described here:
 [Dynatrace Docs - Detection of Frequent Issues](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/root-cause-analysis/concepts/detection-of-frequent-issues)
-__My 2cts:__ A step in the right direction - and something that many customers asked for. Unfortunately focused on the American market (holidays in America, not the Dutch holidays and no fine-tuning or holiday-definition possible).
+__My 2cts:__ A step in the right direction - and something that many customers asked for.
+Unfortunately focused on the American market (holidays in America, not the Dutch holidays and no fine-tuning or holiday-definition possible).
 So far, the settings also seem to be mostly focused on "retail" customers.
 In the future, I would love to see this feature improved with individual holiday definitions. 
 The users KIKON and Anton Pineiro -DynaMight on the Dynatrace community- have created a product idea already. 
 If you have a similar view as me and them on the new feature, feel free to upvote and support:
 [Dynatrace Community - Define distinct type of days for Holidays-aware baseline](https://community.dynatrace.com/t5/Product-ideas/Define-distinct-type-of-days-Holiday-aware-baseline/idi-p/262812)
 
-## 2. DQL/Dashboards/Notebooks
+## DQL/Dashboards/Notebooks
 
 ## Visualize data relationships with the new Scatterplot visualization
 
 __When?__ since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
-__Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks to visualize data relationships and identify patterns, such as correlations between response time and request count.
+__Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks
+to visualize data relationships and identify patterns, such as correlations between response time and request count.
 This new visualization helps you analyze metrics more effectively and uncover insights in your observability data."
 __Mini Demo:__ 
 Let us start off easy with a scatterplot of one metric (y-axis) against the timeframe (x-axis), so  a metric over time.
@@ -124,7 +132,6 @@ For that, we will add the `|summarize correlation()` command.
 //Pearson correlation coefficient
 |summarize correlation(request_count,response_time_p99)
 ```
-
 The result is indeed a positive relationship:
 
 ![Pearson Correlation Coefficient](correlationcoefficient.png)
