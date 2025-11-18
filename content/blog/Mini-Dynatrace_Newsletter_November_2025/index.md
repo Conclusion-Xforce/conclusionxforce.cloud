@@ -60,11 +60,15 @@ to upvote and support:
 
 ## DQL/Dashboards/Notebooks - Visualize data relationships with the new Scatterplots
 
-__When?__ since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
-__Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks
+__When?__ since 21 oct 2025, SaaS version
+1.326 (auto-update, so if you have SaaS this feature is
+available automatically)
+__Summary (from the release notes):__ "You can now use 
+scatterplots in Dashboards and Notebooks
 to visualize data relationships and identify patterns,
 such as correlations between response time and request count.
-This new visualization helps you analyze metrics more effectively and uncover insights
+This new visualization helps you analyze metrics more
+ effectively and uncover insights
 in your observability data."
 __Mini Demo:__ 
 Let us start off easy with a scatterplot of one metric (y-axis)
@@ -76,9 +80,11 @@ timeseries avg(dt.service.request.response_time), by:{dt.entity.service}
 |fieldsAdd entityName(dt.entity.service)
 |filter dt.entity.service.name == "CreditCardValidation" 
 ```
+
 ![Response Time Scatterplot](responsetimescatterplot.png)
 
-If I select a bigger timeframe now, Dynatrace will adjust the interval, meaning
+If I select a bigger timeframe now, Dynatrace will adjust the
+interval, meaning
 that many datapoints will be merged to one.
 I am not keen on that, as it defeats the purpose of a scatterplot
 which is
@@ -91,6 +97,7 @@ timeseries avg(dt.service.request.response_time), interval:1m, by:{dt.entity.ser
 |fieldsAdd entityName(dt.entity.service)
 |filter dt.entity.service.name == "CreditCardValidation"
 ```
+
 ![Response Time Scatterplot bigger timeframe](responsetimescatterplotlarge.png)
  
 Now let's get started on the interesting part, with two different
@@ -118,6 +125,7 @@ timeseries {response_time_p99 = percentile(dt.service.request.response_time, 99)
 |filter dt.entity.service == "SERVICE-1234567891011"
 //enter your own service ID here
 ```
+
 Unfortunately, we cannot choose the scatterplot visualization immediately.
 I actually would have liked that...
 so we will go for a workaround to make it possible.
