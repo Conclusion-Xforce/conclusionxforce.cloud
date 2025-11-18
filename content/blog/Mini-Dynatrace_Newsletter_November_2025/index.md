@@ -42,7 +42,8 @@ as a reference point for performance.
 The logic slightly resembles the logic of the "Frequent Issue Detection",
 as described here:
 [Dynatrace Docs - Detection of Frequent Issues](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/root-cause-analysis/concepts/detection-of-frequent-issues)
-__My 2cts:__ A step in the right direction - and something that many customers asked for.
+__My 2cts:__ A step in the right direction - and something that 
+many customers asked for.
 Unfortunately focused on the American market (holidays in America, not
 the Dutch holidays and no fine-tuning or
 holiday-definition possible).
