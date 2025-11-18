@@ -33,14 +33,16 @@ immediately after the release of the SaaS 1.326 version
 This means, that during holidays, there won't be a baseline created for any metric - nevertheless, the data
 will still be stored, just not as the new reference baseline.
 A week after the holiday, the holiday will not be used as a reference point for performance.
-The logic slightly resembles the logic of the "Frequent Issue Detection", as described here:
+The logic slightly resembles the logic of the "Frequent Issue Detection",
+as described here:
 [Dynatrace Docs - Detection of Frequent Issues](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/root-cause-analysis/concepts/detection-of-frequent-issues)
 __My 2cts:__ A step in the right direction - and something that many customers asked for.
 Unfortunately focused on the American market (holidays in America, not the Dutch holidays
 and no fine-tuning or holiday-definition possible).
 So far, the settings also seem to be mostly focused on "retail" customers.
 In the future, I would love to see this feature improved with individual holiday definitions. 
-The users KIKON and Anton Pineiro -DynaMight on the Dynatrace community- have created a product idea already. 
+The users KIKON and Anton Pineiro - DynaMight on the Dynatrace community -
+have created a product idea already. 
 If you have a similar view as me and them on the new feature, feel free to upvote and support:
 [Dynatrace Community - Define distinct type of days for Holidays-aware baseline](https://community.dynatrace.com/t5/Product-ideas/Define-distinct-type-of-days-Holiday-aware-baseline/idi-p/262812)
 
@@ -50,10 +52,12 @@ If you have a similar view as me and them on the new feature, feel free to upvot
 
 __When?__ since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
 __Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks
-to visualize data relationships and identify patterns, such as correlations between response time and request count.
+to visualize data relationships and identify patterns,
+such as correlations between response time and request count.
 This new visualization helps you analyze metrics more effectively and uncover insights in your observability data."
 __Mini Demo:__ 
-Let us start off easy with a scatterplot of one metric (y-axis) against the timeframe (x-axis), so a metric over time.
+Let us start off easy with a scatterplot of one metric (y-axis)
+against the timeframe (x-axis), so a metric over time.
 This is a nice alternative to line graphs.
 
 ```DQL
@@ -65,8 +69,10 @@ timeseries avg(dt.service.request.response_time), by:{dt.entity.service}
 
 If I select a bigger timeframe now, Dynatrace will adjust the interval, meaning
 that many datapoints will be merged to one.
-I am not keen on that, as it defeats the purpose of a scatterplot which is
-supposed to show all datapoints, but we can avoid it by adding an interval ourselves
+I am not keen on that, as it defeats the purpose of a scatterplot
+which is
+supposed to show all datapoints,
+but we can avoid it by adding an interval ourselves
 Like that:
  
 ```dql
@@ -78,12 +84,15 @@ timeseries avg(dt.service.request.response_time), interval:1m, by:{dt.entity.ser
  
 Now let's get started on the interesting part, with two different
 "metric variables" on the x-axis and the y-axis.
-A small warning/disclaimer: If you create two metrics as a line chart on a dashboard, you
+A small warning/disclaimer: If you create two metrics as a line
+chart on a dashboard, you
 can actually also just append them - less beautiful maybe, but it works.
 As we do want to know the exact y-value for every x-value, to understand their 
-relationship (and these values will be shown without their timestamp on the dashboard), this
+relationship (and these values will be shown without their timestamp
+on the dashboard), this
 approach will not work (at least not without additional data engineering with DQL).
-So you have to use join or lookup commands or create two timeseries immediately in the first step (see my example). More information on joins and lookups: 
+So you have to use join or lookup commands or create two timeseries immediately in the first step (see my example).
+More information on joins and lookups: 
 [Dynatrace Docs - DQL Correlation and join commands](https://docs.dynatrace.com/docs/discover-dynatrace/platform/grail/dynatrace-query-language/commands/correlation-and-join-commands)
 
 If you want to, you can use the Dynatrace playground to test the queries:
@@ -168,9 +177,13 @@ so the link from the DQL tile does not work yet:
 Furthermore, it is not possible yet to simply add two timeseries and turn them into a scatterplot with a normal metrics tile
 or DQL tile without intermediate steps
 (see the error message in this newsletter).
-That could be improved in the future to make this feature more accessible to everyone.
+That could be improved in the future to make
+this feature more accessible to everyone.
+
 ---------------------------------------------------------------------------------------------------------------------------------------------
-Okay, why would I call this a mini newsletter? (I mean, this was quite a long article...)?
+
+Okay, why would I call this a mini newsletter?
+(I mean, this was quite a long article...)?
 This was only a sub-set of all the new features published in the last weeks.
 In the release notes, you can find even more features,
 but mostly with only a few details and little description.
