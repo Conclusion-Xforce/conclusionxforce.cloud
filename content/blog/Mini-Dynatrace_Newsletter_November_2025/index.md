@@ -45,7 +45,7 @@ have created a product idea already.
 If you have a similar view as me and them on the new feature, feel free to upvote and support:
 [Dynatrace Community - Define distinct type of days for Holidays-aware baseline](https://community.dynatrace.com/t5/Product-ideas/Define-distinct-type-of-days-Holiday-aware-baseline/idi-p/262812)
 
-## DQL/Dashboards/Notebooks
+## DQL/Dashboards/Notebooks:
 
 ## Visualize data relationships with the new Scatterplot visualization
 
