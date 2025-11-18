@@ -9,7 +9,7 @@ draft: false
 ---
 I will try to share and highlight new relevant Dynatrace
 features (mostly from the Dynatrace release notes)
-more frequently - seasoned with my personal 
+more frequently - seasoned with my personal
 opinions, ideas and practical context.
 So, welcome to my new and very first Mini Dynatrace Newsletter!
 
@@ -17,19 +17,21 @@ So, welcome to my new and very first Mini Dynatrace Newsletter!
 
 ## Settings - Holiday-aware baseline modification
 
-__When?__ available since 21 oct 2025, SaaS version 1.326 
+__When?__ available since 21 oct 2025, SaaS version 1.326
 (auto-update, so if you have SaaS this feature is available automatically)
 __Summary (from the release notes):__ "Public holidays have a significant impact
 on the usage behavior of services and applications.
 These deviations also affect the accuracy of the service and application baseline.
 To minimize the risk of false positive alerts, specific public holidays are
 systematically excluded from the service baseline and application baseline.
-Excluded public holidays are: New Year, Easter, Thanksgiving, Black Friday and Christmas.
+Excluded public holidays are: New Year, Easter, Thanksgiving,
+Black Friday and Christmas.
 This setting is enabled by default.
 To disable the feature, go
 to Settings > Anomaly Detection> Holiday-aware
 baseline modification."
-__Details:__ The holiday-aware baseline modification now is a default setting - applied
+__Details:__ The holiday-aware baseline modification now
+is a default setting - applied
 immediately after the release of the SaaS 1.326 version
 (yes, you and/or your customers are already using
 it in case you're on SaaS).
@@ -42,27 +44,28 @@ as a reference point for performance.
 The logic slightly resembles the logic of the "Frequent Issue Detection",
 as described here:
 [Dynatrace Docs - Detection of Frequent Issues](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/root-cause-analysis/concepts/detection-of-frequent-issues)
-__My 2cts:__ A step in the right direction - and something that 
+__My 2cts:__ A step in the right direction - and something that
 many customers asked for.
 Unfortunately focused on the American market (holidays in America, not
 the Dutch holidays and no fine-tuning or
 holiday-definition possible).
 So far, the settings also seem to be mostly focused on "retail" customers.
 In the future, I would love to see this feature improved with
-individual holiday definitions. 
+individual holiday definitions.
 The users KIKON and Anton Pineiro - DynaMight on the Dynatrace community -
-have created a product idea already. 
+have created a product idea already.
 If you have a similar view as me and them on the new feature, feel free
 to upvote and support:
 [Dynatrace Community - Define distinct type of days for Holidays-aware baseline](https://community.dynatrace.com/t5/Product-ideas/Define-distinct-type-of-days-Holiday-aware-baseline/idi-p/262812)
 
-## DQL/Dashboards/Notebooks - Visualize data relationships with the new Scatterplot visualization
+## DQL/Dashboards/Notebooks - Visualize data relationships with the new Scatterplots
 
 __When?__ since 21 oct 2025, SaaS version 1.326 (auto-update, so if you have SaaS this feature is available automatically)
 __Summary (from the release notes):__ "You can now use scatterplots in Dashboards Dashboards and Notebooks Notebooks
 to visualize data relationships and identify patterns,
 such as correlations between response time and request count.
-This new visualization helps you analyze metrics more effectively and uncover insights in your observability data."
+This new visualization helps you analyze metrics more effectively and uncover insights
+in your observability data."
 __Mini Demo:__ 
 Let us start off easy with a scatterplot of one metric (y-axis)
 against the timeframe (x-axis), so a metric over time.
@@ -95,13 +98,13 @@ Now let's get started on the interesting part, with two different
 A small warning/disclaimer: If you create two metrics as a line
 chart on a dashboard, you
 can actually also just append them - less beautiful maybe, but it works.
-As we do want to know the exact y-value for every x-value, to understand their 
+As we do want to know the exact y-value for every x-value, to understand their
 relationship (and these values will be shown without their timestamp
 on the dashboard), this
 approach will not work (at least not without additional data engineering with DQL).
 So you have to use join or lookup commands
 or create two timeseries immediately in the first step (see my example).
-More information on joins and lookups: 
+More information on joins and lookups:
 [Dynatrace Docs - DQL Correlation and join commands](https://docs.dynatrace.com/docs/discover-dynatrace/platform/grail/dynatrace-query-language/commands/correlation-and-join-commands)
 
 If you want to, you can use the Dynatrace playground to test the queries:
@@ -135,7 +138,7 @@ The following commands will convert the timeseries to single records:
 |fieldsRemove all
 ```
 
-Result: 
+Result:
 
 ![Result Query](resultquery1.png)
 ![Result Query Scatterplot](resultquery1graph.png)
