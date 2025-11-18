@@ -216,4 +216,4 @@ In the release notes, you can find even more features,
 but mostly with only a few details and little description.
 With these types of newsletters, I am trying to give these improvements
 and adjustments a bit of practical context and give
-everyone a chance to test them as soon as possible. 
+everyone a chance to test them as soon as possible.
