@@ -63,7 +63,8 @@ timeseries avg(dt.service.request.response_time), by:{dt.entity.service}
 ```
 ![Response Time Scatterplot](responsetimescatterplot.png)
 
-If I select a bigger timeframe now, Dynatrace will adjust the interval, meaning that many datapoints will be merged to one.
+If I select a bigger timeframe now, Dynatrace will adjust the interval, meaning
+that many datapoints will be merged to one.
 I am not keen on that, as it defeats the purpose of a scatterplot which is
 supposed to show all datapoints, but we can avoid it by adding an interval ourselves
 Like that:
