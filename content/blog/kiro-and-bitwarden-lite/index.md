@@ -32,7 +32,8 @@ After that, you can choose to either `Vibe` or `Spec`:
 ![Vibe or spec](./1-vibe-or-spec.png)
 
 So, I choose for Vibe and I gave the following prompt: 
-```
+
+```kiro
 A few years ago, I wrote a CloudFormation template for deploying Bitwarden on
 AWS. You can find it in this repository:
 https://github.com/FrederiqueRetsema/aws-bitwarden . It contains security
@@ -93,7 +94,7 @@ about this, at least not now. Maybe it will come to this in following steps?
 
 So, based on this, I asked Kiro to make some changes:
 
-```
+```kiro
 I think the solution has some clever ideas. I'd like to change just a few
 things:
 1) Can you use Step Functions to stop the ECS container (instead of using a sidecar)?
@@ -110,7 +111,7 @@ the design:
 
 ![design-steps-kiro-v2](./3-design-steps-kiro-v2.png)
 
-The new design can be found [here](./design-v2.md).
+The new design can be found [in this file](./design-v2.md).
 
 The result is pretty good! I forgot to tell that I wanted the Lambda function
 to be written in Python.
@@ -123,7 +124,7 @@ off.
 When I look at the environment variables that are in the Bitwarden Lite
 Specifics chapter, I see that some parameters are set to values that are
 specifically discouraged by the Bitwarden Lite documentation: BW_ENABLE_ADMIN
-is set to false by Kiro, where the documentation says (in bold): 
+is set to false by Kiro, where the documentation says (in bold):
 "__Do not disable this service__". The parameter BW_LOG_LEVEL isn't present in
 the Bitwarden Lite documentation.
 
@@ -153,7 +154,8 @@ this setting in the old environment.
 ## Version three
 
 The next question is:
-```
+
+```kiro
 Can you write the Lambda function in Python (the CDK should still be in Typescript)?
 
 I see that the environment variable BW_ENABLE_ADMIN is put to false, where the Bitwarden lite documentation specifically states "Do not disable this service". It might be better to follow the documentation?
@@ -166,7 +168,7 @@ The answer from Kiro:
 ![design-steps-kiro-v3a](./4-design-steps-kiro-v3a.png)
 ![design-steps-kiro-v3b](./5-design-steps-kiro-v3b.png)
 
-The new design is also shown [here]()
+The new design is also shown [in this file](./design-v3.md)
 
 When I read this, I have still some questions: the security groups of the
 container and the database are mentioned here, but it doesn't say anything
@@ -201,9 +203,10 @@ if the certificate already exists.
 
 So, let's ask Kiro to change the design:
 
-```
+```kiro
 Can you make some minor adjustments:
-- please use ACM for certificates. Don't add an ACM certificate yourself, let me do that. Add some code in the CDK to see if a certificate exists for the FQDN or a star certificate that matches the FQDN and use it if it exists.
+- please use ACM for certificates. Don't add an ACM certificate yourself, let me do that.
+Add some code in the CDK to see if a certificate exists for the FQDN or a star certificate that matches the FQDN and use it if it exists.
 - please remove the http port out of the security group, we don't need it as AWS (and not Bitwarden) will take care of the certificate
 - the output of the shell script should just contain the https address
 - please use the newest Lambda runtime versions where possible
@@ -215,7 +218,7 @@ The answer from Kiro:
 ![design-steps-kiro-v4a](./6-design-steps-kiro-v4a.png)
 ![design-steps-kiro-v4b](./7-design-steps-kiro-v4b.png)
 
-The new design is also shown [here]()
+The new design is also shown [in this file](./design-v4.md)
 
 I removed the output files from Kiro from the previous step to a new directory,
 it therefore recreated those files. I'll ask to move the output files to a new
@@ -232,7 +235,7 @@ it can be done from the Step Function directly.
 
 So, let's ask Kiro:
 
-```
+```kiro
 Is it possible to use an API Gateway with ACM certificates instead of the ALB?
 Can you put the output files to the directory /clone/aws-bitwarden-lite ?
 And is it possible to check the status of the ECS task directly from the Step Function instead of using a Lambda function to do so?
@@ -251,9 +254,10 @@ directory on my system that is not below the home directory. For every
 "command" block in this list I had to approve the execution of the command.
 
 You can find the files that are generated in this directory:
-[clone_aws-bitwarden-lite](./clone/aws-bitwarden-lite/), with this 
+[clone_aws-bitwarden-lite](./clone/aws-bitwarden-lite/), with this
 [INDEX.md](./clone/aws-bitwarden-lite/INDEX.md). The design document
-can be found [here](./clone/aws-bitwarden-lite/bitwarden-lite-aws-design.md).
+can be found
+[on this website](./clone/aws-bitwarden-lite/bitwarden-lite-aws-design.md).
 
 The environment variables for the SSL configuration are now removed.
 After reviewing all the files, the next step is to create the solution.
@@ -262,7 +266,7 @@ After reviewing all the files, the next step is to create the solution.
 
 So, let's ask to create the necessary files:
 
-```
+```kiro
 Can you create the necessary files in the clone/aws-bitwarden-lite directory?
 ```
 
@@ -276,7 +280,7 @@ the CDK scripts for me. But let's proceed, following the
 
 So, I manually executed the following commands:
 
-```
+```bash
 sudo npm install -g aws-cdk
 mkdir clone/bitwarden-cdk
 cdk init --language typescript
@@ -291,7 +295,7 @@ did all the copies and changes that are in the checklist.
 
 Now it's time for Kiro to create the CDK files:
 
-```
+```kiro
 Can you create the CDK files in the clone/bitwarden-cdk/lib/constructs directory?
 ```
 
@@ -308,7 +312,7 @@ When I tried to run `cdk synth`, I ran into an error:
 
 Let's ask Kiro to solve it's own issues:
 
-```
+```kiro
 When I run cdk synth, I see error messages. Can you fix them?
 ```
 
@@ -316,27 +320,28 @@ When I run cdk synth, I see error messages. Can you fix them?
 
 Okay, pasting in the first error:
 
-```
+```error
 lib/constructs/api-gateway.ts:145:7 - error TS2353: Object literal may only specify known properties, and 'vpcLink' does not exist in type 'HttpIntegrationProps'.
 ```
 
 ![solve-issue-2a](./20-help-to-solve-error-2a.png)
 ![solve-issue-2b](./21-help-to-solve-error-2b.png)
 
-After an npm install and cdk synth, there were other errors as well. I will save you the process of 
+After an npm install and cdk synth, there were other errors as well. I will save you the process of
 debugging with Kiro, there were a total of about 8-10 errors. Some because Kira's code was incorrect,
 some because newer versions of runtimes were not (yet) present in the CDK. CDK now gives warnings:
 
-```
+```warning
 Deploying to account: 123456789012, region: eu-west-1
 [WARNING] aws-cdk-lib.aws_stepfunctions.StateMachineProps#definition is deprecated.
 ```
 
 When I deployed the resources in my account, I got errors in the CDK deployment:
 
-```
+```error
 No export named BitwardenCertificateArn found. 
 ```
+
 ![22-solve-error-bitwarden-certificate-arn-not-found](./22-solve-error-bitwarden-certificate-arn-not-found.png)
 
 Well... This wasn't what I expected. After some other errors (this one caused
@@ -353,7 +358,7 @@ Apart from this, it deploys an API Gateway with API keys that integrate with a
 start and a stop Lambda function.
 
 I wouldn't expect the EFS volume to be in the private subnet, I would put it
-in the isolated subnet myself. 
+in the isolated subnet myself.
 
 Though the network overview in EC2 just showed one database connection to the
 VPC, the definition of the database subnet groups is correctly showing both
@@ -362,12 +367,12 @@ subnets.
 ## Debugging Bitwarden Lite and Kiro code
 
 Next was a --long-- process of debugging Kiro code and Bitwarden Lite. Some
-annoying things from Kiro: 
+annoying things from Kiro:
 
 * I'd expect that when I give a documentation page with environment variables,
 that these variables are used (and not other, older, ones). Apparently it
 trusts the data from its own training model more than the most current version
-of Bitwarden Lite. 
+of Bitwarden Lite.
 
 * There were some minor errors in the start and stop scripts.
 
@@ -380,7 +385,7 @@ fix it.
 supported in the near future: kiro is a tool that is included in AWS, so you
 would expect Kiro to know about this:
 
-```
+```error
 [WARNING] aws-cdk-lib.aws_ecs.ClusterProps#containerInsights is deprecated.
   See {@link containerInsightsV2 }
   This API will be removed in the next major release.
@@ -404,7 +409,7 @@ I had to ask twice before both warnings were gone.
 The biggest issue, was in the security groups: the VPC Link and the Network Load
 Balancer share the same security group. There are no rules in the ingress rules
 of this security group, so the traffic from the VPC Link would never reach the
-Load Balancer. 
+Load Balancer.
 
 The ECS container and the EFS volume share another security group. Technically
 this works, but is it confusing to see open ports for both NFS and the
@@ -419,7 +424,7 @@ change some security group to allow traffic from my private IP address to the
 Bitwarden vault. When I tried to do that manually, this didn't work: the VPC
 Link security group doesn't have to allow for ingress traffic, the API Gateway
 sends the data from outside the VPC to inside the VPC. VPC Flow Logs also
-didn't see my public IP address when I called the API Gateway, so changing 
+didn't see my public IP address when I called the API Gateway, so changing
 security groups will not help me.
 
 I also couldn't find a way to change the HTTP API Gateway to restrict the
@@ -470,7 +475,7 @@ databases, this works fine.
 
 The DNS name was changed when the ECS container was started. The disadvantage
 of this solution is that it takes a few minutes before one can use the password
-manager because of DNS propagation. 
+manager because of DNS propagation.
 
 When the container is started, it will first connect to the database and the
 EFS volume and do an upgrade. This takes a few seconds. I added functionality
@@ -479,7 +484,7 @@ session should be started.
 
 ## Conclusion
 
-### Kiro
+### Conclusion Kiro
 
 I think the strength of Kiro is the help in creation of the design. There were
 some mistakes, but in general creating the design felt like I worked with
@@ -507,7 +512,7 @@ debugging myself.
 I do think, however, that using Kiro saved me some time. I believe that tools
 like Kiro will be the future of development when they become more mature.
 
-### Bitwarden Lite
+### Conclusion Bitwarden Lite
 
 We had to wait for more than two years for the Bitwarden Unified/Bitwarden Lite
 solution. And now we have it, it has errors in it's initial MySQL solution.
@@ -515,9 +520,11 @@ Organization functionality shouldn't be used in the Lite version. That, in
 combination with the higher costs, makes this solution not ready for AWS now.
 
 ## Links
+
 [1] My article about Bitwarden on AWS on the AMIS Technology Blog can be found
-[here](https://technology.amis.nl/aws/how-to-install-bitwarden-with-added-security-in-aws/)
-[2] Bitwarden Lite can be found [here](https://bitwarden.com/help/install-and-deploy-lite/)
-[2] The announcement of Kiro was done in Werner Vogels last keynote session on AWS re:Invent.
-The session can be viewed [here](https://www.youtube.com/live/tksd2dLFskY). More information
-about Kiro is given 47 minutes after the start.
+[on this website](https://technology.amis.nl/aws/how-to-install-bitwarden-with-added-security-in-aws/)
+[2] Bitwarden Lite can be found
+[on this website](https://bitwarden.com/help/install-and-deploy-lite/)
+[2] The announcement of Kiro was done in
+[Werner Vogels last keynote session on AWS re:Invent](https://www.youtube.com/live/tksd2dLFskY).
+More information about Kiro is given 47 minutes after the start.
