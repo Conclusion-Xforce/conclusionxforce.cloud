@@ -1,0 +1,9 @@
+# Requirements for Python Lambda functions
+# boto3 is already included in Lambda runtime (Python 3.13), but specifying version for local testing
+
+boto3>=1.35.0
+botocore>=1.35.0
+
+# For local testing only (not needed in Lambda)
+# pytest>=8.0.0
+# moto>=5.0.0  # For mocking AWS services

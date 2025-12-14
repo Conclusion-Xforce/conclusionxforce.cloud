@@ -23,8 +23,12 @@ give, see our [meetup page](https://www.meetup.com/nl-NL/xforce-kennissessies/).
 
 ## Blogs
 
-For the blogs that I wrote on this blog site, search on my name in the search
-bar. In the past I also wrote
+On this site, I wrote the following blogs:
+* [ArgoCD SSO based on AWS Cognito Userpools](https://conclusionxforce.cloud/blog/argocd-sso-based-on-aws-cognito-userpools/)
+* [Azure Monitor Alerts and Dynatrace](https://conclusionxforce.cloud/blog/azure-alerts-dynatrace/)
+* [AWS Kiro and Bitwarden Lite](https://conclusionxforce.cloud/blog/kiro-and-bitwarden-lite/)
+
+In the past I also wrote
 [blogs for Conclusion AMIS](https://technology.amis.nl/author/frederique-retsemaamis-nl/).
 
 ## LinkedIn

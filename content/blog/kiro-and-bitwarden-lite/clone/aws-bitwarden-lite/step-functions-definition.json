@@ -1,0 +1,95 @@
+{
+  "Comment": "Auto-shutdown workflow for Bitwarden container with native ECS integration",
+  "StartAt": "WaitForTimeout",
+  "States": {
+    "WaitForTimeout": {
+      "Type": "Wait",
+      "Seconds": 1800,
+      "Comment": "Wait for 30 minutes (configurable via CDK parameter)",
+      "Next": "DescribeTask"
+    },
+    "DescribeTask": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::ecs:describeTasks",
+      "Comment": "Check ECS task status using native Step Functions integration",
+      "Parameters": {
+        "Cluster.$": "$.clusterName",
+        "Tasks.$": "States.Array($.taskArn)"
+      },
+      "ResultPath": "$.describeResult",
+      "Next": "CheckTaskStatus",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Comment": "If task not found or error, consider it already stopped",
+          "Next": "AlreadyStopped"
+        }
+      ]
+    },
+    "CheckTaskStatus": {
+      "Type": "Choice",
+      "Comment": "Determine if task is still running",
+      "Choices": [
+        {
+          "Variable": "$.describeResult.Tasks[0].LastStatus",
+          "StringEquals": "RUNNING",
+          "Next": "StopTask"
+        },
+        {
+          "Variable": "$.describeResult.Tasks[0].LastStatus",
+          "StringEquals": "PENDING",
+          "Next": "StopTask"
+        }
+      ],
+      "Default": "AlreadyStopped"
+    },
+    "StopTask": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::ecs:stopTask",
+      "Comment": "Stop ECS task using native Step Functions integration",
+      "Parameters": {
+        "Cluster.$": "$.clusterName",
+        "Task.$": "$.taskArn",
+        "Reason": "Auto-shutdown after timeout"
+      },
+      "ResultPath": "$.stopResult",
+      "Next": "CleanupResources",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Comment": "If stop fails, still try to cleanup",
+          "Next": "CleanupResources"
+        }
+      ]
+    },
+    "CleanupResources": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Comment": "Cleanup DNS record and other resources",
+      "Parameters": {
+        "FunctionName": "${CleanupLambdaArn}",
+        "Payload": {
+          "taskArn.$": "$.taskArn",
+          "hostedZoneId.$": "$.hostedZoneId",
+          "fqdn.$": "$.fqdn",
+          "apiGatewayDomainName.$": "$.apiGatewayDomainName",
+          "apiGatewayHostedZoneId.$": "$.apiGatewayHostedZoneId"
+        }
+      },
+      "ResultPath": "$.cleanupResult",
+      "End": true,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        }
+      ]
+    },
+    "AlreadyStopped": {
+      "Type": "Succeed",
+      "Comment": "Task was already stopped, no action needed"
+    }
+  }
+}
