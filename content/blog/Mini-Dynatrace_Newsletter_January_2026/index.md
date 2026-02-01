@@ -7,13 +7,15 @@ date: '2026-01-31'
 tags: [Observability, Dynatrace, Releasenotes, Newsletter]
 draft: false
 ---
+
 As already mentioned in my very first newsletter, 
 I will try to share and highlight new relevant Dynatrace
 features (mostly from the Dynatrace release notes)
 more frequently - seasoned with my personal
 opinions, ideas and practical context.
 And of course, there is much to share again from the 
-past 2 months - meaning I should also be quick with another February newsletter to catch up.
+past 2 months - meaning I should also be quick with another February newsletter to catch up.S
+
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Settings - Management of dashboards, notebooks, and other documents for administrators
