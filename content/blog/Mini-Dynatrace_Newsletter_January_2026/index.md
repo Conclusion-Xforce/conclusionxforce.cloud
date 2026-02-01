@@ -14,7 +14,8 @@ features (mostly from the Dynatrace release notes)
 more frequently - seasoned with my personal
 opinions, ideas and practical context.
 And of course, there is much to share again from the
-past 2 months - meaning I should also be quick with another February newsletter to catch up.
+past 2 months - meaning I should also be quick with
+another February newsletter to catch up.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -28,8 +29,8 @@ control over organizational documents.
 The Document Management page enables administrators to:
 - View all documents (dashboards, notebooks, and other document types)
 across the environment.
-- Manage document ownership and sharing permissions.
-- Access comprehensive document listings for all users.
+- Manage document ownership and sharing permissions. 
+- Access comprehensive document listings for all users. 
 To access the Document Management page, users must have the
 document:documents:admin permission scope. This scope has
 been automatically added to the predefined Admin User policy.
@@ -39,7 +40,9 @@ This will bypass any ownership or sharing access controls,
 and you can manage all documents in this environment to change sharing,
 ownership, or download content.
 When opening documents directly from the management view:
-Documents can only be opened if you have existing access permissions independent of your admin privileges and to view documents without direct access (for example, a dashboard owned by another user), you must
+Documents can only be opened if you have existing access permissions
+independent of your admin privileges and to view documents without
+direct access (for example, a dashboard owned by another user), you must
 first do one of the following:
 - Transfer ownership to yourself.
 - Add a sharing permission for yourself.
@@ -48,7 +51,8 @@ will be included in future updates."
 
 __Details:__ To find the Document Management page, you need to go to Settings > General
 __My 2cts:__ Okay, I was waiting for this for so long, so I am definitely positive!
-I was pretty much spamming the Dyantrace community with the wish of finally having a decent
+I was pretty much spamming the Dyantrace community
+with the wish of finally having a decent
 overview of all dashboards as an admin - also in the UI
 (that was also something we all were used to on Dynatrace Managed).
 Do I love the new feature? Yes. Do I think it's easy to find? No.
@@ -60,19 +64,20 @@ Then again, we often saw features move in SaaS, like the OpenPipeline
 app which became a Setting, so maybe it will also happen the other way around.
 What would I like to see next? For me, group ownership is a must.
 Right now, every document can only have one owner - a specific person or service user
-(please don't randomly assign a group via the API, this seems to create
+(please don't randomly assign a group via the API,
+this seems to create
 problems which you can only solve with admin rights:
-[Dynatrace Community - Dashboard ownership changed to group losing the share and delete rights](https://community.dynatrace.com/t5/Dashboarding/Dashboard-ownership-changed-to-group-losing-the-share-and-delete/m-p/277561#M5090)).
+[Dynatrace Community - Dashboard ownership changed to group](https://community.dynatrace.com/t5/Dashboarding/Dashboard-ownership-changed-to-group-losing-the-share-and-delete/m-p/277561#M5090)).
 What's the issue with a group of users not being
 allowed as the owners? Imagine I share a
 dashboard with my teammembers, but me and them
 are not admins. Then they will not be able to share the dashboard with
-others while I am on leave - even if I gave them edit rights. Another benefit is that
+others while I am on leave - even if I gave them edit rights.
+Another benefit is that
 no one will have to claim my dashboard if my account is deleted, for example
 due to leaving the company. Did I convince you
 that group ownership of documents is needed? Then you can upvote my idea here:
 [Dynatrace Community - Assign a Dashboard owner for a team](https://community.dynatrace.com/t5/Product-ideas/Assign-a-Dashboard-owner-for-a-team/idc-p/275164#M55805)
-
 
 ## Davis - Filtering by segments for Anomaly Detection
 
@@ -87,9 +92,15 @@ context-aware alerting configurations.
 Segments configured in the Notebooks or Dashboards app are
 automatically inherited by the alert widget,
 maintaining context as you switch from data exploration to alert creation.
-When you navigate from Anomaly Detection to Notebooks or Dashboards via Open with, selected segments are automatically applied."
+When you navigate from Anomaly Detection to Notebooks
+or Dashboards via Open with, selected segments are automatically applied."
 __Details:__
-__My 2cts:__ I would probably use this feature mainly to apply Teams or App segment filters. For different teams managing anomaly detectors, using the segments will give a better view of their own configured alerts/forecasts, and hence their scope of responsibility. I do love the inherit functionalities that were released with this feature.
+__My 2cts:__ I would probably use this feature mainly to apply
+Teams or App segment filters. For different teams managing
+anomaly detectors, using the segments will give a better view of
+their own configured alerts/forecasts, and hence their scope of
+responsibility. I do love the inherit functionalities that were
+released with this feature.
 
 ## Platform - New API for easier removal of outdated custom metrics
 
@@ -100,11 +111,14 @@ __Summary (from the release notes):__ "The environment API now
 provides a new endpoint to bulk delete custom metrics that
 haven’t been written in a given number of days:
 `DELETE /api/v2/metrics?metricSelector=<your-selector>&minUnusedDays=<nr-of-days>`
-Use the `metricSelector` parameter to select metrics to be deleted. You can use wildcards to delete:
+Use the `metricSelector` parameter to select
+metrics to be deleted. You can use wildcards to delete:
 Metrics that match a prefix.
 - All metrics (by selecting *).
-- Use the `minUnusedDays` parameter to specify at which point matching metrics should be deleted.
-For example, `minUnusedDays=60` will delete all matching metrics that haven’t been written in the last 60 days."
+- Use the `minUnusedDays` parameter to specify
+at which point matching metrics should be deleted.
+For example, `minUnusedDays=60` will delete
+all matching metrics that haven’t been written in the last 60 days."
 __Details:__
 __My 2cts:__ I never really saw this feature aa must. Technically, I don't
 see much of a reason to delete "old" custom metrics,
