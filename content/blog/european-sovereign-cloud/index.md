@@ -11,7 +11,7 @@ draft: false
 
 ## Introduction
 
-A few months ago, AWS introduced its AWS European Sovereign cloud. It is
+A few months ago, AWS introduced its AWS European Sovereign Cloud. It is
 delivered in the middle of a broader discussion about sovereignty, where
 people seem to have very strong opinions: according to some people there
 is just one option and that is to leave the American cloud providers as
@@ -49,8 +49,8 @@ the access from any workload on that hyperscaler cloud to that hacker is made
 impossible. Do European cloud providers have these security measures in place
 as well? And, when they do, is the chance of hitting one of the European
 Sovereign Cloud honeypots as high as hitting one of the honeypots of the
-hyperscaler clouds? The idea that European Sovereign clouds are by default
-more secure than non-European Sovereign clouds might not be true...
+hyperscaler clouds? The idea that European Sovereign Clouds are by default
+more secure than non-European Sovereign Clouds might not be true...
 
 Another question is if European Sovereign Clouds are the solution to populist
 governments. The USA is not the only country where populism is rising. The
@@ -83,7 +83,7 @@ functionality in one of the European Government Clouds will cost time.
 ## Costs of migration
 
 That brings me to the cost of migration. As with any migration, migrating to
-the European Sovereign cloud costs time and money. It takes time to choose the
+the European Sovereign Cloud costs time and money. It takes time to choose the
 most appropriate European Sovereign Cloud for your use case. It takes time to
 prepare the migration, test it in test environments, it takes capacity in the
 organization that cannot be used to deliver new functionality or help
@@ -132,7 +132,7 @@ risks?
 
 ## Conclusion
 
-When you listen to some evangelists of the European Sovereign cloud, it’s all
+When you listen to some evangelists of the European Sovereign Cloud, it’s all
 very easy. The choice to migrate to the European Sovereign Cloud is easy –
 because the impact of a decision of the US Government can destroy your
 organization. The disadvantages of these choices are rarely mentioned. I think
