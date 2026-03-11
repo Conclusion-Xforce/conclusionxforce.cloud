@@ -79,7 +79,7 @@ One example of this is AWS Secrets Manager: it can be configured to change
 passwords in Secrets Manager and then change the same password in for example
 your MySQL database. Setting this up can be done in minutes. Implementing this
 functionality in one of the European Government Clouds will cost time.
- 
+
 ## Costs of migration
 
 That brings me to the cost of migration. As with any migration, migrating to
