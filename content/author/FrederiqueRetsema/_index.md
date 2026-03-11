@@ -26,6 +26,7 @@ give, see our [meetup page](https://www.meetup.com/nl-NL/xforce-kennissessies/).
 I wrote a few blogs on this site already, and there is more to come! Read for
 example the blogs about:
 
+* [The European Sovereign Cloud, more complex than it seems?](https://conclusionxforce.cloud/blog/european-sovereign-cloud/)
 * [AWS Nuke with AWS Step Functions](https://conclusionxforce.cloud/blog/aws-nuke-with-aws-stepfunctions/),
 * [ArgoCD SSO based on AWS Cognito Userpools](https://conclusionxforce.cloud/blog/argocd-sso-based-on-aws-cognito-userpools/)
 * [Azure monitor alerts to Dynatrace](https://conclusionxforce.cloud/blog/azure-alerts-dynatrace/).
