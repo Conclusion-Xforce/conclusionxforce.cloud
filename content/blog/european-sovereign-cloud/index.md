@@ -54,7 +54,7 @@ more secure than non-European Sovereign Clouds might not be true...
 
 Another aspect that is often overlooked is that political uncertainty is not
 limited to countries outside Europe. It also exists within EU member states
-themselves. In several European countries, parties with strong views on 
+themselves. In several European countries, parties with strong views on
 national identity or a more populist, inward‑looking agenda are gaining
 influence. This raises a relevant question: what happens when such parties
 become part of a government and introduce policies that affect digital
