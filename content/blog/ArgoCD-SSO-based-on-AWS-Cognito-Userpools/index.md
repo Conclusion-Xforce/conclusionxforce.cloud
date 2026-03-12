@@ -4,7 +4,7 @@ subtitle: How to connect ArgoCD to AWS Cognito
 description: Blog that shows with code snippets how to connect ArgoCD to AWS Cognito
 authors: ["Frederique Retsema"]
 date: '2025-05-21'
-tags: [AWS, Kubernetes, ArgoCD, OIDC]
+tags: [AWS, Kubernetes, ArgoCD, OIDC, Public Cloud]
 draft: false
 ---
 

@@ -4,7 +4,7 @@ subtitle: Automate everything, create future proof cleanup solution
 description: Automate AWS Nuke by using EventBridge, AWS Step Functions and Lambda
 authors: [Frederique Retsema]
 date: '2025-12-28'
-tags: [AWS EventBridge, AWS Step Functions, AWS Nuke]
+tags: [AWS EventBridge, AWS Step Functions, AWS Nuke, Public Cloud]
 draft: false
 ---
 ![Steps](./capitol-1450615_1280.jpg)
