@@ -52,13 +52,18 @@ Sovereign Cloud honeypots as high as hitting one of the honeypots of the
 hyperscaler clouds? The idea that European Sovereign Clouds are by default
 more secure than non-European Sovereign Clouds might not be true...
 
-Another question is if European Sovereign Clouds are the solution to populist
-governments. The USA is not the only country where populism is rising. The
-AfD in Germany, RN in France, FvD in the Netherlands, they are all rising. What
-will happen when populist parties become part of a government or elect a
-president in one of these countries? Is the European Sovereign Cloud then a
-safe place to be – or is another migration needed to a cloud in a different
-European country?
+Another aspect that is often overlooked is that political uncertainty is not
+limited to countries outside Europe. It also exists within EU member states
+themselves. In several European countries, parties with strong views on 
+national identity or a more populist, inward‑looking agenda are gaining
+influence. This raises a relevant question: what happens when such parties
+become part of a government and introduce policies that affect digital
+infrastructure, data governance, or international cooperation? A migration
+to a European Sovereign Cloud may feel like the right step today, but future
+political developments could still require organizations to rethink their
+choices. It is therefore important to acknowledge that no cloud strategy is
+entirely insulated from political dynamics, inside or outside the European
+Union.
 
 ## Functionality in the different clouds
 
