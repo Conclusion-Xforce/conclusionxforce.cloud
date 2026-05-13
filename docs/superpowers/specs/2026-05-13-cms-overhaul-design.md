@@ -71,9 +71,9 @@ Queries `.Site.RegularPages` and filters to pages where `.Params.authors` contai
 
 ### Post author attribution
 
-**New file:** `layouts/blog/single.html` (or a shared partial)
+**New files:** `layouts/partials/author-byline.html` + `layouts/blog/single.html`
 
-Adds an author byline to each blog post: avatar image and name, linking to `/author/<name>/`. The author name from frontmatter is used as a lookup key against author pages in `content/author/`. Multiple authors are supported (the `authors` field is an array).
+`author-byline.html` renders one author's avatar and name as a link to `/author/<name>/`. `layouts/blog/single.html` wraps the Hextra single-post layout and includes the byline partial for each entry in `.Params.authors`. Multiple authors are supported (the `authors` field is an array).
 
 ---
 
