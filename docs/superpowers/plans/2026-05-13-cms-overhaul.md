@@ -421,9 +421,7 @@ This overrides the Hextra default single-post template. It preserves all existin
         {{- partial "components/comments.html" . -}}
       </main>
     </article>
-    <div class="hx:max-xl:hidden hx:w-64 hx:shrink-0 hx:pt-8">
-      {{ partial "sidebar-tags.html" . }}
-    </div>
+    <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div>
   </div>
 {{ end }}
 ```
@@ -445,19 +443,11 @@ grep "href=\"/tags/" public/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/index
 
 Expected: at least one `/author/` link and at least one `/tags/` link per check.
 
-- [ ] **Step 4: Verify sidebar-tags is included on post pages**
-
-```bash
-grep "All tags" public/blog/ArgoCD-SSO-based-on-AWS-Cognito-Userpools/index.html
-```
-
-Expected: "All tags →" appears.
-
-- [ ] **Step 5: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
 git add layouts/blog/single.html
-git commit -m "feat: blog single layout with author bylines, tag links, sidebar"
+git commit -m "feat: blog single layout with author bylines and tag links"
 ```
 
 ---
@@ -678,8 +668,7 @@ Open `http://localhost:1313/blog/` and verify:
 
 Open any blog post and verify:
 - Author name(s) link to their author page(s)
-- Tag links work
-- Sidebar-tags panel appears on the right (wide screen)
+- Inline tag links work
 
 Open `/author/jitseklomp/` and verify:
 - Author bio appears
