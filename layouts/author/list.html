@@ -7,21 +7,46 @@
         {{ if .Title }}<h1 class="hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
         <div class="content hx:mt-4">{{ .Content }}</div>
 
-        {{- $authorName := .Title -}}
-        {{- $posts := (where .Site.RegularPages ".Params.authors" "intersect" (slice $authorName)).ByDate.Reverse -}}
-        {{- if $posts }}
-          <section class="hx:mt-12">
-            <h2 class="homepage-section-heading">Posts by {{ $authorName }}</h2>
-            <hr class="homepage-divider" />
-            {{- range $posts }}
-              <div class="homepage-post-card hx:mb-6">
-                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                <p class="hx:opacity-50 hx:text-sm hx:mt-1">{{ partial "utils/format-date" .Date }}</p>
-                <p class="hx:opacity-80 hx:mt-2 hx:leading-7">{{ partial "utils/page-description" . }}</p>
-                <a class="homepage-read-more" href="{{ .RelPermalink }}">Read more →</a>
+        {{- if .Parent.IsHome }}
+
+          {{/* ── Author index: grid of all authors ── */}}
+          <div class="homepage-authors-grid hx:mt-8">
+            {{- range .Sections.ByTitle }}
+              {{- $img := .Resources.GetMatch "*.png" -}}
+              {{- if not $img -}}{{- $img = .Resources.GetMatch "*.jpg" -}}{{- end -}}
+              <div class="homepage-author-card">
+                <a href="{{ .RelPermalink }}">
+                  {{- if $img }}
+                    <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                  {{- else }}
+                    <div class="homepage-author-placeholder"></div>
+                  {{- end }}
+                  <span>{{ .Title }}</span>
+                </a>
               </div>
             {{- end }}
-          </section>
+          </div>
+
+        {{- else }}
+
+          {{/* ── Individual author: posts by this author ── */}}
+          {{- $authorName := .Title -}}
+          {{- $posts := (where .Site.RegularPages ".Params.authors" "intersect" (slice $authorName)).ByDate.Reverse -}}
+          {{- if $posts }}
+            <section class="hx:mt-12">
+              <h2 class="homepage-section-heading">Posts by {{ $authorName }}</h2>
+              <hr class="homepage-divider" />
+              {{- range $posts }}
+                <div class="homepage-post-card hx:mb-6">
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  <p class="hx:opacity-50 hx:text-sm hx:mt-1">{{ partial "utils/format-date" .Date }}</p>
+                  <p class="hx:opacity-80 hx:mt-2 hx:leading-7">{{ partial "utils/page-description" . }}</p>
+                  <a class="homepage-read-more" href="{{ .RelPermalink }}">Read more →</a>
+                </div>
+              {{- end }}
+            </section>
+          {{- end }}
+
         {{- end }}
       </main>
     </article>
