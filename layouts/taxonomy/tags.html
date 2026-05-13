@@ -7,7 +7,7 @@
         <div class="hx:mt-6 hx:flex hx:flex-wrap hx:gap-3">
           {{- range .Data.Terms.Alphabetical }}
             <a href="{{ .Page.RelPermalink }}"
-               class="hx:inline-flex hx:items-center hx:gap-1 hx:rounded-full hx:border hx:px-3 hx:py-1 hx:text-sm hx:font-medium hx:transition-colors hover:hx:bg-slate-100 hx:dark:hover:hx:bg-slate-800">
+               class="hx:inline-flex hx:items-center hx:gap-1 hx:rounded-full hx:border hx:px-3 hx:py-1 hx:text-sm hx:font-medium hx:transition-colors hover:hx:bg-slate-100 hx:dark:hover:bg-slate-800">
               #{{ .Page.Title }}<span class="hx:opacity-50">{{ .Count }}</span>
             </a>
           {{- end }}
