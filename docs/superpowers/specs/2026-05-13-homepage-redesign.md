@@ -44,7 +44,7 @@ homepage so visitors can scan it at a glance.
 ### Color scheme
 
 Dark, technical-premium palette applied site-wide via CSS custom properties in
-`assets/custom.css`.
+`static/css/custom-styles.css`.
 
 | Role | Value |
 |------|-------|
@@ -62,7 +62,7 @@ the tag chips.
 
 ### Typography
 
-Fonts loaded via Google Fonts `@import` in `assets/custom.css`.
+Fonts loaded via Google Fonts `@import` in `static/css/custom-styles.css`.
 
 | Role | Font |
 |------|------|
@@ -125,10 +125,10 @@ Styled in CSS:
 | `layouts/hextra-home.html` | Add `<hr class="homepage-divider">` between hero and each section |
 | `layouts/hextra-home.html` | Wrap latest post content in a card `<div>` with accent left border |
 | `layouts/hextra-home.html` | Wrap each author in a card `<div>` with secondary accent left border |
-| `assets/custom.css` | `@import` Montserrat from Google Fonts |
-| `assets/custom.css` | Override Hextra CSS variables for background, text, and accent colors |
-| `assets/custom.css` | Add `body` font-family (Montserrat Light) and heading font-family (Montserrat 700) |
-| `assets/custom.css` | Add `.homepage-section-heading`, `.homepage-divider`, card, and tag chip styles |
+| `static/css/custom-styles.css` | `@import` Montserrat from Google Fonts |
+| `static/css/custom-styles.css` | Override Hextra CSS variables for background, text, and accent colors |
+| `static/css/custom-styles.css` | Add `body` font-family (Montserrat Light) and heading font-family (Montserrat 700) |
+| `static/css/custom-styles.css` | Add `.homepage-section-heading`, `.homepage-divider`, card, and tag chip styles |
 
 `content/_index.md` — **no changes needed.**
 

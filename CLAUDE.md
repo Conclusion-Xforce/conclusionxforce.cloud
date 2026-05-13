@@ -54,7 +54,7 @@ draft: false
 
 - **Theme**: `themes/hextra/` (git submodule — do not edit files here).
 - **Layout overrides**: `layouts/author/` contains custom Hugo templates that override the theme's author list/single views.
-- **CSS**: `assets/custom.css` for site-wide custom styles.
+- **CSS**: `static/css/custom-styles.css` for site-wide custom styles (loaded via `layouts/partials/custom/head-end.html`).
 - **Site config**: `hugo.yaml` controls navigation menus, search (flexsearch), syntax highlighting, and theme parameters.
 
 ### CI

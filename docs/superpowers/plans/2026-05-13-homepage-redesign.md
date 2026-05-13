@@ -4,7 +4,7 @@
 
 **Goal:** Restore the hero section on the homepage, apply a dark technical-premium visual style site-wide, and add clear structural hierarchy with accent-bordered content cards.
 
-**Architecture:** Three-file change — `hugo.yaml` locks the theme to dark mode, `assets/custom.css` provides all custom styles (fonts, colors, components), and `layouts/hextra-home.html` is updated to render the hero content and use new CSS classes for headings, dividers, and cards.
+**Architecture:** Three-file change — `hugo.yaml` locks the theme to dark mode, `static/css/custom-styles.css` provides all custom styles (fonts, colors, components), and `layouts/hextra-home.html` is updated to render the hero content and use new CSS classes for headings, dividers, and cards.
 
 **Tech Stack:** Hugo 0.145.0, Hextra theme, Tailwind CSS (via Hextra), Google Fonts (Montserrat)
 
@@ -48,11 +48,11 @@ git commit -m "feat: force dark theme site-wide"
 ### Task 2: Apply custom styles (fonts, colors, homepage components)
 
 **Files:**
-- Modify: `assets/custom.css`
+- Modify: `static/css/custom-styles.css`
 
 - [ ] **Step 1: Write the full custom.css**
 
-Replace the entire contents of `assets/custom.css` with:
+Replace the entire contents of `static/css/custom-styles.css` with:
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,300&display=swap');
@@ -216,7 +216,7 @@ Run `hugo server` and open `http://localhost:1313/`. Confirm:
 - [ ] **Step 3: Commit**
 
 ```bash
-git add assets/custom.css
+git add static/css/custom-styles.css
 git commit -m "feat: apply dark color scheme, Montserrat typography, homepage component styles"
 ```
 

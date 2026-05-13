@@ -4,7 +4,7 @@
     {{- range .Site.Taxonomies.tags.Alphabetical }}
       <li>
         <a href="{{ .Page.RelPermalink }}"
-           class="hx:flex hx:justify-between hx:items-center hx:text-sm hx:py-0.5 hx:text-slate-600 hx:dark:text-slate-300 hover:hx:text-slate-900 hx:dark:hover:hx:text-slate-100">
+           class="hx:flex hx:justify-between hx:items-center hx:text-sm hx:py-0.5 hx:text-slate-600 hx:dark:text-slate-300 hx:hover:text-slate-900 hx:dark:hover:text-slate-100">
           <span>#{{ .Page.Title }}</span>
           <span class="hx:opacity-40 hx:text-xs hx:tabular-nums">{{ .Count }}</span>
         </a>

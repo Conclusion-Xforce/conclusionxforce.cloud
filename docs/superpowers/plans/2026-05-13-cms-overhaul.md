@@ -369,7 +369,7 @@ git commit -m "feat: add author-byline partial"
 **Files:**
 - Create: `layouts/blog/single.html`
 
-This overrides the Hextra default single-post template. It preserves all existing Hextra features (breadcrumb, ToC, pagination, comments, last-updated) and adds: linked author bylines via `author-byline.html`, clickable tag links, and the sidebar-tags panel.
+This overrides the Hextra default single-post template. It preserves all existing Hextra features (breadcrumb, ToC, pagination, comments, last-updated) and adds: linked author bylines via `author-byline.html` and clickable inline tag links. The sidebar-tags panel was removed from single posts to give the article full width.
 
 - [ ] **Step 1: Create `layouts/blog/single.html`**
 
