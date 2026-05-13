@@ -21,11 +21,8 @@
                   <div class="homepage-author-placeholder"></div>
                 {{- end }}
                 <div class="author-index-body">
-                  <h3 class="author-index-name">
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                  </h3>
-                  <p class="author-index-summary">{{ .Summary }}</p>
-                  <a class="homepage-read-more" href="{{ .RelPermalink }}">Read more →</a>
+                  <h3 class="author-index-name">{{ .Title }}</h3>
+                  <a class="homepage-read-more" href="{{ .RelPermalink }}">About me →</a>
                 </div>
               </div>
             {{- end }}
