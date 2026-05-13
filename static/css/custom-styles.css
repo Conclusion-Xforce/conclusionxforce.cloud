@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,300&display=swap');
-
-/* ── Typography ─────────────────────────────────────────────── */
+/* Typography */
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -12,15 +10,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* ── Dark color scheme ──────────────────────────────────────── */
+/* Dark color scheme */
 
-/* Background: override Hextra's dark neutral */
 html, body {
   background-color: #040720 !important;
   color: #ffffff;
 }
 
-/* Navbar */
 header nav,
 .nav-container {
   background-color: rgba(4, 7, 32, 0.92) !important;
@@ -28,19 +24,16 @@ header nav,
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Sidebar and content area backgrounds */
 aside,
 .hextra-scrollbar {
   background-color: #040720 !important;
 }
 
-/* Footer */
 footer {
   background-color: #040720 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Links — accent color */
 article a,
 main a {
   color: #0097B2;
@@ -51,7 +44,17 @@ main a:hover {
   color: #5A3F8C;
 }
 
-/* ── Homepage component styles ──────────────────────────────── */
+/* Hero button — keep white text despite the link color rule above */
+main a.not-prose {
+  color: #ffffff;
+}
+
+main a.not-prose:hover {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+/* Homepage component styles */
 
 .homepage-section-heading {
   font-family: 'Montserrat', sans-serif;
@@ -68,7 +71,6 @@ main a:hover {
   margin: 2.5rem 0;
 }
 
-/* Latest post card — primary accent left border */
 .homepage-post-card {
   border-left: 3px solid #0097B2;
   background: rgba(255, 255, 255, 0.04);
@@ -106,24 +108,42 @@ main a:hover {
   color: #5A3F8C !important;
 }
 
-/* Author cards — secondary accent left border */
+.homepage-authors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
 .homepage-author-card {
   border-left: 3px solid #5A3F8C;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 0 8px 8px 0;
-  padding: 0.625rem 1rem;
+  padding: 1rem;
 }
 
 .homepage-author-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   color: #ffffff !important;
   text-decoration: none !important;
+  text-align: center;
 }
 
 .homepage-author-card a:hover {
   color: #0097B2 !important;
 }
 
-/* Tag chips — outlined in primary accent, fill on hover */
+.homepage-author-card img,
+.homepage-author-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .homepage-tag-chip {
   display: inline-flex;
   align-items: center;
@@ -145,4 +165,10 @@ main a:hover {
 
 .homepage-tag-chip span {
   opacity: 0.6;
+}
+
+/* Fix TOC scroll-to-top sticky area background */
+.hextra-toc div[class*="bottom-0"] {
+  background-color: #040720 !important;
+  box-shadow: 0 -12px 16px #040720 !important;
 }

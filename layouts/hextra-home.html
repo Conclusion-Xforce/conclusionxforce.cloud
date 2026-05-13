@@ -1,0 +1,70 @@
+{{ define "main" }}
+  <div class="hx:mx-auto hx:flex {{ partial `utils/page-width` . }}">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+
+        {{/* ── Hero (headline, subtitle, CTA button, welcome text) ── */}}
+        {{ .Content }}
+
+        {{/* ── Latest post ────────────────────────────────────────── */}}
+        <hr class="homepage-divider" />
+        <section class="hx:mb-14">
+          <h2 class="homepage-section-heading">Latest Post</h2>
+          {{- $latestPost := index (where .Site.RegularPages "Section" "blog").ByDate.Reverse 0 -}}
+          {{- with $latestPost }}
+            <div class="homepage-post-card">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p class="hx:opacity-50 hx:text-sm hx:mt-2">
+                {{ partial "utils/format-date" .Date -}}
+                {{- with .Params.authors }} · {{ delimit . ", " }}{{ end }}
+              </p>
+              <p class="hx:mt-4 hx:leading-7 hx:opacity-80">{{ partial "utils/page-description" . }}</p>
+              <a class="homepage-read-more" href="{{ .RelPermalink }}">Continue reading →</a>
+            </div>
+          {{- end }}
+        </section>
+
+        {{/* ── Tag cloud ──────────────────────────────────────────── */}}
+        <hr class="homepage-divider" />
+        <section class="hx:mb-14">
+          <h2 class="homepage-section-heading">Browse by Tag</h2>
+          <div class="hx:flex hx:flex-wrap hx:gap-2">
+            {{- range .Site.Taxonomies.tags.Alphabetical }}
+              <a href="{{ .Page.RelPermalink }}" class="homepage-tag-chip">
+                #{{ .Page.Title }}<span>{{ .Count }}</span>
+              </a>
+            {{- end }}
+          </div>
+        </section>
+
+        {{/* ── Author index ────────────────────────────────────────── */}}
+        <hr class="homepage-divider" />
+        <section class="hx:mb-14">
+          <h2 class="homepage-section-heading">Authors</h2>
+          <div class="homepage-authors-grid">
+            {{- $authorSection := .Site.GetPage "/author" -}}
+            {{- if $authorSection -}}
+              {{- range $authorSection.Sections.ByTitle }}
+                {{- $img := .Resources.GetMatch "*.png" -}}
+                {{- if not $img -}}{{- $img = .Resources.GetMatch "*.jpg" -}}{{- end -}}
+                <div class="homepage-author-card">
+                  <a href="{{ .RelPermalink }}">
+                    {{- if $img }}
+                      <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                    {{- else }}
+                      <div class="homepage-author-placeholder"></div>
+                    {{- end }}
+                    <span>{{ .Title }}</span>
+                  </a>
+                </div>
+              {{- end }}
+            {{- end }}
+          </div>
+        </section>
+
+      </main>
+    </article>
+    <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div>
+  </div>
+{{- end -}}
