@@ -44,6 +44,16 @@ main a:hover {
   color: #5A3F8C;
 }
 
+/* Hero button — keep white text despite the link color rule above */
+main a.not-prose {
+  color: #ffffff;
+}
+
+main a.not-prose:hover {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
 /* Homepage component styles */
 
 .homepage-section-heading {
@@ -98,20 +108,40 @@ main a:hover {
   color: #5A3F8C !important;
 }
 
+.homepage-authors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
 .homepage-author-card {
   border-left: 3px solid #5A3F8C;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 0 8px 8px 0;
-  padding: 0.625rem 1rem;
+  padding: 1rem;
 }
 
 .homepage-author-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   color: #ffffff !important;
   text-decoration: none !important;
+  text-align: center;
 }
 
 .homepage-author-card a:hover {
   color: #0097B2 !important;
+}
+
+.homepage-author-card img,
+.homepage-author-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .homepage-tag-chip {

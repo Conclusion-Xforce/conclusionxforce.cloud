@@ -42,21 +42,20 @@
         <hr class="homepage-divider" />
         <section class="hx:mb-14">
           <h2 class="homepage-section-heading">Authors</h2>
-          <div class="hx:flex hx:flex-wrap hx:gap-4">
+          <div class="homepage-authors-grid">
             {{- $authorSection := .Site.GetPage "/author" -}}
             {{- if $authorSection -}}
               {{- range $authorSection.Sections.ByTitle }}
                 {{- $img := .Resources.GetMatch "*.png" -}}
                 {{- if not $img -}}{{- $img = .Resources.GetMatch "*.jpg" -}}{{- end -}}
                 <div class="homepage-author-card">
-                  <a href="{{ .RelPermalink }}" class="hx:flex hx:flex-row hx:items-center hx:gap-3 hx:no-underline">
+                  <a href="{{ .RelPermalink }}">
                     {{- if $img }}
-                      <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}"
-                           class="hx:h-10 hx:w-10 hx:rounded-full hx:object-cover" loading="lazy" />
+                      <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
                     {{- else }}
-                      <div class="hx:h-10 hx:w-10 hx:rounded-full hx:bg-slate-700"></div>
+                      <div class="homepage-author-placeholder"></div>
                     {{- end }}
-                    <span class="hx:text-sm hx:font-medium">{{ .Title }}</span>
+                    <span>{{ .Title }}</span>
                   </a>
                 </div>
               {{- end }}
