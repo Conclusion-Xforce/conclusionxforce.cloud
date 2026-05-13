@@ -19,7 +19,7 @@
                 {{ partial "utils/format-date" .Date -}}
                 {{- with .Params.authors }} · {{ delimit . ", " }}{{ end }}
               </p>
-              <p class="hx:mt-4 hx:leading-7 hx:opacity-80">{{ .Summary }}</p>
+              <p class="hx:mt-4 hx:leading-7 hx:opacity-80">{{ partial "utils/page-description" . }}</p>
               <a class="homepage-read-more" href="{{ .RelPermalink }}">Continue reading →</a>
             </div>
           {{- end }}
