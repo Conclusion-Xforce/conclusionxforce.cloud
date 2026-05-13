@@ -46,7 +46,7 @@ enableInlineShortcodes: true
 menu:
   main:
     - identifier: blog
-      name: Blog
+      name: Posts
       pageRef: /blog
       weight: 1
     - identifier: author
