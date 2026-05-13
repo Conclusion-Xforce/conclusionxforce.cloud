@@ -1,32 +1,54 @@
 {{ define "main" }}
-  {{- $readMore := (T "readMore") | default "Read more →" -}}
   <div class="hx:mx-auto hx:flex {{ partial `utils/page-width` . }}">
     {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
     <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
       <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
-        <br class="hx:mt-1.5 hx:text-sm" />
-        {{ if .Title }}<h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
-        <div class="content">{{ .Content }}</div>
-        {{- $pages := partial "utils/sort-pages" (dict "page" . "by" "title" "order" "asc") -}}
-        {{- range $pages }}
-          <div class="hx:mb-10">
-            <h3><a style="color: inherit; text-decoration: none;" class="hx:block hx:font-semibold hx:mt-8 hx:text-2xl " href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            {{- if site.Params.blog.list.displayTags -}}
-              {{ with .Params.tags }}
-                <p class="hx:opacity-50 hx:text-sm hx:leading-7">
-                  {{- range . }}<a class="hx:inline-block hx:mr-2">#{{ . }}</a>{{ end -}}
-                </p>
-              {{ end -}}
-            {{- end -}}
-            <p class="hx:opacity-80 hx:mt-4 hx:leading-7">{{- partial "utils/page-description" . -}}</p>
-            <p class="hx:opacity-80 hx:mt-1 hx:leading-7">
-              <a class="hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:decoration-from-font" href="{{ .RelPermalink }}">
-                {{- $readMore -}}
-              </a>
-            </p>
-            <p class="hx:opacity-50 hx:text-sm hx:mt-4 hx:leading-7">{{ partial "utils/format-date" .Date }}</p>
+        {{ partial "breadcrumb.html" . }}
+        {{ if .Title }}<h1 class="hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
+        <div class="content hx:mt-4">{{ .Content }}</div>
+
+        {{- if .Parent.IsHome }}
+
+          {{/* ── Author index: grid of all authors ── */}}
+          <div class="author-index-grid hx:mt-8">
+            {{- range .Sections.ByTitle }}
+              {{- $img := .Resources.GetMatch "*.png" -}}
+              {{- if not $img -}}{{- $img = .Resources.GetMatch "*.jpg" -}}{{- end -}}
+              <div class="author-index-card">
+                {{- if $img }}
+                  <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                {{- else }}
+                  <div class="homepage-author-placeholder"></div>
+                {{- end }}
+                <div class="author-index-body">
+                  <h3 class="author-index-name">{{ .Title }}</h3>
+                  <a class="homepage-read-more" href="{{ .RelPermalink }}">About me →</a>
+                </div>
+              </div>
+            {{- end }}
           </div>
-        {{ end -}}
+
+        {{- else }}
+
+          {{/* ── Individual author: posts by this author ── */}}
+          {{- $authorName := .Title -}}
+          {{- $posts := (where .Site.RegularPages ".Params.authors" "intersect" (slice $authorName)).ByDate.Reverse -}}
+          {{- if $posts }}
+            <section class="hx:mt-12">
+              <h2 class="homepage-section-heading">Posts by {{ $authorName }}</h2>
+              <hr class="homepage-divider" />
+              {{- range $posts }}
+                <div class="homepage-post-card hx:mb-6">
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  <p class="hx:opacity-50 hx:text-sm hx:mt-1">{{ partial "utils/format-date" .Date }}</p>
+                  <p class="hx:opacity-80 hx:mt-2 hx:leading-7">{{ partial "utils/page-description" . }}</p>
+                  <a class="homepage-read-more" href="{{ .RelPermalink }}">Read more →</a>
+                </div>
+              {{- end }}
+            </section>
+          {{- end }}
+
+        {{- end }}
       </main>
     </article>
     <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div>

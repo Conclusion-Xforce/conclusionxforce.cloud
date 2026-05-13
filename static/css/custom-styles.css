@@ -167,6 +167,58 @@ main a.not-prose:hover {
   opacity: 0.6;
 }
 
+/* Author index page — bigger cards with bio */
+
+.author-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.author-index-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25rem;
+  border-left: 3px solid #5A3F8C;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem;
+}
+
+.author-index-card img,
+.author-index-card .homepage-author-placeholder {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.author-index-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.author-index-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.author-index-name a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+.author-index-name a:hover {
+  color: #0097B2 !important;
+}
+
+
 /* Fix TOC scroll-to-top sticky area background */
 .hextra-toc div[class*="bottom-0"] {
   background-color: #040720 !important;
