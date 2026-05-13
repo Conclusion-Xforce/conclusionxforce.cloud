@@ -13,7 +13,7 @@
             {{- range $i, $author := . -}}
               {{- if $i }}<span class="hx:mr-1">,</span>{{ end -}}
               {{- if reflect.IsMap $author -}}
-                <a {{ with $author.link }}href="{{ . }}" target="_blank"{{ end }}
+                <a {{ with $author.link }}href="{{ . }}" target="_blank" rel="noopener noreferrer"{{ end }}
                    class="hx:group hx:inline-flex hx:items-center hx:text-current hx:gap-x-1.5 hx:mx-1"
                    {{ with $author.name }}title="{{ . }}"{{ end }}>
                   {{- with $author.image -}}

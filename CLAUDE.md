@@ -43,7 +43,7 @@ New posts are scaffolded from `archetypes/blog/default.md`. Required fields:
 title: My Blog Title
 subtitle: My subtitle
 description: A short blurb about my blog
-authors: [Author Name]          # must match the author directory name
+authors: [Author Name]          # must match the title in the author's _index.md
 date: '2026-01-01'
 tags: [tag1, tag2]
 draft: false

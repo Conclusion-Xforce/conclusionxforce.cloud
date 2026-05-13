@@ -85,12 +85,12 @@ main a.not-prose:hover {
   color: #ffffff;
 }
 
-.homepage-post-card a {
+.homepage-post-card a:not(.homepage-read-more) {
   color: inherit !important;
   text-decoration: none;
 }
 
-.homepage-post-card a:hover {
+.homepage-post-card a:not(.homepage-read-more):hover {
   color: #0097B2 !important;
 }
 

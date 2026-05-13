@@ -13,7 +13,7 @@
 ## Prerequisites (run once, not a task)
 
 ```bash
-pip3 install -r requirements.txt   # installs hugo 0.145.0
+pip3 install -r requirements-dev.txt   # installs hugo 0.145.0
 git submodule update --init        # fetches the Hextra theme
 hugo build                         # baseline — must succeed with 0 errors before starting
 ```

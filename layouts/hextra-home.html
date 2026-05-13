@@ -11,8 +11,7 @@
         <hr class="homepage-divider" />
         <section class="hx:mb-14">
           <h2 class="homepage-section-heading">Latest Post</h2>
-          {{- $latestPost := index (where .Site.RegularPages "Section" "blog").ByDate.Reverse 0 -}}
-          {{- with $latestPost }}
+          {{- range first 1 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
             <div class="homepage-post-card">
               <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
               <p class="hx:opacity-50 hx:text-sm hx:mt-2">
