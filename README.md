@@ -1,50 +1,76 @@
 # Conclusion Xforce techblog
 
-This repo contains the source code for the Conclusion Xforce techblog. To get
-started, you need Python>=3.9. Install [Hugo](https://gohugo.io/) and other
-prerequisistes by running the following command in the root directory of the
-project:
+This repo contains the source code for the Conclusion Xforce techblog, built
+with [Hugo](https://gohugo.io/) and the
+[Hextra](https://github.com/imfing/hextra/) theme.
+
+## Local setup
+
+**Prerequisites:** Hugo 0.145.0. Install it (and pin the version) via pip:
 
 ```bash
-pip3 install -r requirements.txt
+pip3 install -r requirements-dev.txt
 ```
 
-As we use a Git submodule for the [Hextra theme](https://github.com/imfing/hextra/),
-run the following commands to fetch the source code:
+The [Hextra theme](https://github.com/imfing/hextra/) is included as a Git
+submodule. Fetch it once after cloning:
 
 ```bash
 git submodule init
 git submodule update
 ```
 
-Then, run the following command to start the server:
+Start the dev server:
 
 ```bash
 hugo server
 ```
 
-This will start a local server at `http://localhost:1313/` where you can view
-the blog. The content is located in the `content` directory, and the theme is
-located in the `themes` directory. You can customize the theme and content as
-per your requirements.
+The site is then available at `http://localhost:1313/`.
 
-## Contributing
+## Writing content
 
-If you want to contribute to this project, feel free to fork the repository and
-create a pull request. You can add new articles, improve the theme, or fix any
-bugs you find.
+### Blog posts
 
-Run the following command to add a new article:
+Each post lives in its own directory under `content/blog/`. Scaffold one with:
 
 ```bash
 hugo new blog/My-Blog-Title
 ```
 
-This will create a new markdown file in the `content/blog` directory. You can
-then edit this file to add your content.
+This creates `content/blog/My-Blog-Title/index.md` from the archetype. Fill in
+the frontmatter:
 
-Want to add an author page? Just run `hugo new author/Your-Name` and don't
-forget to change your picture!
+```yaml
+---
+title: My Blog Title
+subtitle: My subtitle
+description: A short blurb about my blog
+authors: [Author Name]   # must match the directory name under content/author/
+date: '2026-01-01'
+tags: [tag1, tag2]
+draft: false
+---
+```
+
+Place any images for the post in the same directory as `index.md`.
+
+### Author pages
+
+First-time author? Create your page with:
+
+```bash
+hugo new author/Your-Name
+```
+
+This creates `content/author/Your-Name/_index.md`. Add a profile photo in that
+directory and update the frontmatter.
+
+## Contributing
+
+Fork the repository and open a pull request against `main`. Pull requests are
+linted automatically — make sure your Markdown passes `markdownlint-cli2`
+before pushing.
 
 ## License
 
