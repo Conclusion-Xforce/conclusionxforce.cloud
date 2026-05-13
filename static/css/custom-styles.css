@@ -166,3 +166,9 @@ main a.not-prose:hover {
 .homepage-tag-chip span {
   opacity: 0.6;
 }
+
+/* Fix TOC scroll-to-top sticky area background */
+.hextra-toc div[class*="bottom-0"] {
+  background-color: #040720 !important;
+  box-shadow: 0 -12px 16px #040720 !important;
+}
