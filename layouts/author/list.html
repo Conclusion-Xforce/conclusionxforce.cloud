@@ -10,19 +10,23 @@
         {{- if .Parent.IsHome }}
 
           {{/* ── Author index: grid of all authors ── */}}
-          <div class="homepage-authors-grid hx:mt-8">
+          <div class="author-index-grid hx:mt-8">
             {{- range .Sections.ByTitle }}
               {{- $img := .Resources.GetMatch "*.png" -}}
               {{- if not $img -}}{{- $img = .Resources.GetMatch "*.jpg" -}}{{- end -}}
-              <div class="homepage-author-card">
-                <a href="{{ .RelPermalink }}">
-                  {{- if $img }}
-                    <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
-                  {{- else }}
-                    <div class="homepage-author-placeholder"></div>
-                  {{- end }}
-                  <span>{{ .Title }}</span>
-                </a>
+              <div class="author-index-card">
+                {{- if $img }}
+                  <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                {{- else }}
+                  <div class="homepage-author-placeholder"></div>
+                {{- end }}
+                <div class="author-index-body">
+                  <h3 class="author-index-name">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  </h3>
+                  <p class="author-index-summary">{{ .Summary }}</p>
+                  <a class="homepage-read-more" href="{{ .RelPermalink }}">Read more →</a>
+                </div>
               </div>
             {{- end }}
           </div>
