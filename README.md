@@ -1,7 +1,8 @@
 # Conclusion Xforce techblog
 
 This repo contains the source code for the Conclusion Xforce techblog, built
-with [Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra/) theme.
+with [Hugo](https://gohugo.io/) and the
+[Hextra](https://github.com/imfing/hextra/) theme.
 
 ## Local setup
 

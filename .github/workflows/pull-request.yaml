@@ -14,4 +14,5 @@ jobs:
         globs: |
           **/[^_]*.md
           !docs/superpowers/**
+          !CLAUDE.md
  
