@@ -28,14 +28,7 @@
             {{- end -}}
           {{- end -}}
         </div>
-        {{- with .Params.tags }}
-          <div class="hx:mb-8 hx:flex hx:flex-wrap hx:gap-2">
-            {{- range . }}
-              <a href="/tags/{{ . | urlize }}/"
-                 class="hx:text-sm hx:opacity-60 hx:hover:opacity-100">#{{ . }}</a>
-            {{- end }}
-          </div>
-        {{- end }}
+
         <div class="content">{{ .Content }}</div>
         {{- partial "components/last-updated.html" . -}}
         {{- if (site.Params.blog.article.displayPagination | default true) -}}
