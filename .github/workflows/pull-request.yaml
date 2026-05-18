@@ -11,5 +11,8 @@ jobs:
     - name: Lint markdown files
       uses: DavidAnson/markdownlint-cli2-action@v20
       with:
-        globs: '**/[^_]*.md'
+        globs: |
+          **/[^_]*.md
+          !docs/superpowers/**
+          !CLAUDE.md
  

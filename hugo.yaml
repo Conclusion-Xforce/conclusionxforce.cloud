@@ -9,6 +9,8 @@ enableRobotsTXT: true
 # Parse Git commit
 enableGitInfo: true
 enableEmoji: false
+taxonomies:
+  tag: tags
 hasCJKLanguage: false
 
 # services:
@@ -44,7 +46,7 @@ enableInlineShortcodes: true
 menu:
   main:
     - identifier: blog
-      name: Blog
+      name: Posts
       pageRef: /blog
       weight: 1
     - identifier: author
@@ -105,8 +107,8 @@ params:
 
   theme:
     # light | dark | system
-    default: system
-    displayToggle: true
+    default: dark
+    displayToggle: false
 
   footer:
     enable: true

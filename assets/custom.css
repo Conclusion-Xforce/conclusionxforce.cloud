@@ -1,0 +1,3 @@
+/* Styles are loaded via static/css/custom-styles.css (see layouts/partials/custom/head-end.html).
+   Hugo's resource pipeline does not serve this file due to a known issue with css/custom.css
+   resolution order against the theme stub. */

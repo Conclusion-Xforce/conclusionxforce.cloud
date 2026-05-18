@@ -1,0 +1,17 @@
+<div class="hx:p-4 hx:sticky hx:top-16">
+  <p class="hx:text-xs hx:font-semibold hx:uppercase hx:tracking-wide hx:text-slate-500 hx:dark:text-slate-400 hx:mb-3">Tags</p>
+  <ul class="hx:space-y-1">
+    {{- range .Site.Taxonomies.tags.Alphabetical }}
+      <li>
+        <a href="{{ .Page.RelPermalink }}"
+           class="hx:flex hx:justify-between hx:items-center hx:text-sm hx:py-0.5 hx:text-slate-600 hx:dark:text-slate-300 hx:hover:text-slate-900 hx:dark:hover:text-slate-100">
+          <span>#{{ .Page.Title }}</span>
+          <span class="hx:opacity-40 hx:text-xs hx:tabular-nums">{{ .Count }}</span>
+        </a>
+      </li>
+    {{- end }}
+  </ul>
+  <div class="hx:mt-4 hx:border-t hx:pt-3">
+    <a href="/tags/" class="hx:text-xs hx:text-[color:hsl(var(--primary-hue),100%,50%)]">All tags →</a>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{{- $name := .name -}}
+{{- $site := .site -}}
+{{- $candidates := where $site.Pages "Type" "author" -}}
+{{- $authorPage := index (where $candidates "Title" $name) 0 -}}
+{{- if $authorPage -}}
+  {{- $img := $authorPage.Resources.GetMatch "*.png" -}}
+  {{- if not $img -}}{{- $img = $authorPage.Resources.GetMatch "*.jpg" -}}{{- end -}}
+  <a href="{{ $authorPage.RelPermalink }}"
+     class="hx:group hx:inline-flex hx:items-center hx:gap-x-1.5 hx:text-current hx:no-underline hx:mx-1">
+    {{- if $img }}
+      <img src="{{ $img.RelPermalink }}" alt="{{ $name }}"
+           class="hx:inline-block hx:h-5 hx:w-5 hx:rounded-full hx:object-cover" loading="lazy" />
+    {{- end }}
+    <span class="hx:group-hover:underline">{{ $name }}</span>
+  </a>
+{{- else -}}
+  <span class="hx:mx-1">{{ $name }}</span>
+{{- end -}}
