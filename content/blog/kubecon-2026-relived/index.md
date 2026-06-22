@@ -167,13 +167,15 @@ This leads to:
 
 It would be better to use one way-of-working for this within Crossplane.
 
-When you use the newest versions (on the time of writing this blog), it is not possible to put
-values in SecureStrings in SSM parameters or in SecretValues in secretsmanager. These have to be
-pulled from a kubernetes secret. The Kubernetes secret for the SSM parameter can be put in the
-namespace of the application, the secret for secretsmanager should be in the default
-namespace (which is not what one would expect when one deploys the solution).
+When you use the newest versions (on the time of writing this blog), it is not
+possible to put values in SecureStrings in SSM parameters or in SecretValues in
+secretsmanager. These have to be pulled from a kubernetes secret. The
+Kubernetes secret for the SSM parameter can be put in the namespace of the
+application, the secret for secretsmanager should be in the default namespace
+(which is not what one would expect when one deploys the solution).
 
-When you delete a secret and then recreate it, you might get an error message that says:
+When you delete a secret and then recreate it, you might get an error message
+that says:
 
 ```error
 failed to create the resource: [...] creating Secrets Manager Secret
@@ -192,9 +194,10 @@ aws secretsmanager delete-secret --secret-id kubecon26/examples/04-crossplane/de
 ### Crossplane CLI
 
 I then tried to follow along with the Kubecon demo in
-[this repository](https://github.com/adamwg/kubecon-eu-2026-devex-demo), but the PR was
-already merged and some commands were different than those in the repository. I could follow
-along using the following commands on the control node of my AWS kubecon26-example-repo:
+[this repository](https://github.com/adamwg/kubecon-eu-2026-devex-demo), but
+the PR was already merged and some commands were different than those in the
+repository. I could follow along using the following commands on the control
+node of my AWS kubecon26-example-repo:
 
 #### Setup
 ```bash
@@ -240,20 +243,20 @@ kubectl port-forward svc/$(kubectl get svc -l crossplane.io/composite=podinfo -o
 curl http://localhost:9898
 ```
 
-It was very nice to see that using crossplane is made easier by just having to add the relevant
-code and let the crossplane CLI do the rest.
+It was very nice to see that using crossplane is made easier by just having to
+add the relevant code and let the crossplane CLI do the rest.
 
 ## 05 - OpenTelemetry
 
-In Kubernetes services can be slow, which can be cause by calls to the DNS. I liked the talk
-about "
+In Kubernetes services can be slow, which can be cause by calls to the DNS. I
+liked the talk about "
 [DNS Tracing and Metrics Via eBPF in OpenTelemetry](https://kccnceu2026.sched.com/event/2CW5C/dns-tracing-metrics-via-ebpf-in-opentelemetry-endre-sara-causely-nikola-grcevski-grafana-labs?iframe=no)
-". Sometimes the slowness is not caused by the DNS server, but by the DNS clients: maybe
-by not using the FQDN of the server. But where does this happen?
+". Sometimes the slowness is not caused by the DNS server, but by the DNS
+clients: maybe by not using the FQDN of the server. But where does this happen?
 
 We can find out by using OpenTelemetry eBPF Instrumentation (OBI). Both metrics
-and spans are supported. I added the configuration for eBPF and OpenTelemetry in
-the example repository.
+and spans are supported. I added the configuration for eBPF and OpenTelemetry
+in the example repository.
 
 You can look at the dashboard DNS Requests (eBPF) for DNS requests within this
 cluster.
@@ -270,18 +273,20 @@ I changed the script a little bit to add different paths. This is the result:
 
 ## 06 - Policy Engines
 
-One of the nice things of Kubecon is that some presentors give overviews of different solutions
-for the same problem. The presentation
+One of the nice things of Kubecon is that some presentors give overviews of
+different solutions for the same problem. The presentation
 [Policy Engines for Kubernetes: Picking One Without Losing Your Mind](https://kccnceu2026.sched.com/event/2CW0S/policy-engines-for-kubernetes-picking-one-without-losing-your-mind-nabarun-pal-broadcom)
-by Naburan Pal did just that. He did a great job of showing code, advantages and disadvantages
-of four policy engines: ValidatingAdmissionPolicies, Kyverno, OPA/Gatekeeper and Kubewarden.
+by Naburan Pal did just that. He did a great job of showing code, advantages
+and disadvantages of four policy engines: ValidatingAdmissionPolicies, Kyverno,
+OPA/Gatekeeper and Kubewarden.
 
-I implemented three of four in my example repository: Kubewarden is used less in the community
-and has a different architecture so I left this one out.
+I implemented three of four in my example repository: Kubewarden is used less
+in the community and has a different architecture so I left this one out.
 
 ## Conclusion
 
-It helped me to play with knowledge I learned from conferences like Kubecon. You can do as well,
-by using [the example repository](https://github.com/FrederiqueRetsema/Kubecon26-example-repo).
+It helped me to play with knowledge I learned from conferences like Kubecon.
+You can do as well, by using
+[the example repository](https://github.com/FrederiqueRetsema/Kubecon26-example-repo).
 
 Have fun!
