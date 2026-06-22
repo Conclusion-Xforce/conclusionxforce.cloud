@@ -205,6 +205,7 @@ repository. I could follow along using the following commands on the control
 node of my AWS kubecon26-example-repo:
 
 #### Setup
+
 ```bash
 # This commands are done for you
 cd /clone
