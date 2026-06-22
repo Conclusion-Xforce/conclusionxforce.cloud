@@ -23,13 +23,14 @@ Go to the `aws-deployment` directory, copy the `setenv.template.sh` file to
 `setenv.sh` and change the values in the file. Then start the environment
 with
 
-```
+```bash
 bash login.sh
 bash start-k8s.sh
 ```
 
 You can delete the environment by
-```
+
+```bash
 bash stop-k8s.sh
 ```
 
@@ -110,7 +111,7 @@ are some differences in the way Crossplane deals with these objects. The way
 that Crossplane refers to AWS objects is also different: for SSM parameters
 this works via annotations:
 
-```
+```yaml
 apiVersion: ssm.aws.m.upbound.io/v1beta1
 kind: Parameter
 metadata:
@@ -126,7 +127,7 @@ spec:
 
 For secrets, this is via a (Kubernetes) secret name parameter in forProvider:
 
-```
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -174,7 +175,7 @@ namespace (which is not what one would expect when one deploys the solution).
 
 When you delete a secret and then recreate it, you might get an error message that says:
 
-```
+```error
 failed to create the resource: [...] creating Secrets Manager Secret
 (kubecon26/examples/04-crossplane/demo-secret): operation error Secrets Manager: CreateSecret,
 https response error StatusCode: 400, RequestID: 1ab23456-7890-1cde-fgh2-34i5678jkl9m,
@@ -184,7 +185,7 @@ scheduled for deletion.
 
 This can be solved by using the AWS CLI:
 
-```
+```bash
 aws secretsmanager delete-secret --secret-id kubecon26/examples/04-crossplane/demo-secret --force-delete-without-recovery --region eu-west-1 --profile your-profile
 ```
 
@@ -196,7 +197,7 @@ already merged and some commands were different than those in the repository. I 
 along using the following commands on the control node of my AWS kubecon26-example-repo:
 
 #### Setup
-```
+```bash
 # This commands are done for you
 cd /clone
 git clone https://github.com/crossplane/cli
@@ -210,7 +211,7 @@ PATH=$PATH:/home/kubernetes/go/bin
 
 You can follow along with the rest of the demo, executing
 
-```
+```bash
 crossplane project init hello-amsterdam && cd hello-amsterdam
 ```
 
@@ -218,7 +219,7 @@ from the `~/kubernetes` directory.
 
 In step 7, use v1.34.0 instead:
 
-```
+```bash
 crossplane dependency add k8s:v1.34.0
 echo
 echo "Here's what crossplane-project.yaml looks like after adding the dependency:"
@@ -228,13 +229,13 @@ cat crossplane-project.yaml
 
 In step 10, don't use the --crossplane-version argument:
 
-```
+```bash
 crossplane composition render --timeout=10m examples/webapp/podinfo.yaml apis/webapps/composition.yaml
 ```
 
 In step 14, use curl instead of open:
 
-```
+```bash
 kubectl port-forward svc/$(kubectl get svc -l crossplane.io/composite=podinfo -o jsonpath='{.items[0].metadata.name}') 9898 >/dev/null 2>&1 &
 curl http://localhost:9898
 ```
