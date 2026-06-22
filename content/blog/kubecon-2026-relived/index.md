@@ -3,7 +3,7 @@ title: Kubecon 2026 relived
 subtitle: The nicest presentation of Kubecon in a sandbox Kubernetes cluster
 description: I created a sandbox Kubernetes cluster in AWS with examples from Kubecon presentations
 authors: ['Frederique Retsema']
-date: '2026-06-21'
+date: '2026-06-22'
 tags: ['Cloud Native', 'Public Cloud', 'AWS']
 draft: false
 ---
@@ -12,8 +12,8 @@ draft: false
 
 I like big conferences: you can get a lot of knowledge in a very short time.
 During the Kubecon conference in Amsterdam in March 2026, I maintained a list
-of what I want to learn after the conference. In the weeks after Kubecon, I
-tried to recreate the examples in my AWS play environment. In this case: a
+of what I wanted to learn after the conference. In the weeks after Kubecon, I
+tried to recreate the examples in the AWS play environment. In this case: a
 vanilla implementation of Kubernetes with one control node and two worker
 nodes. In this blog some of the lessons I learned.
 
@@ -73,7 +73,7 @@ the talk "
 [simple repository](https://github.com/kostis-codefresh/external-secrets-gitops-example)
 to show how this works.
 
-I implemented in my own environment as well.
+I implemented his solution in my own environment as well.
 
 ## 03 - Refresh secrets AWS
 
@@ -84,8 +84,8 @@ operator that "translates" AWS SSM parameters to ConfigMaps. Unfortunately this
 doesn't exist (yet), but you can use External Secrets Operator to translate
 SSM parameters into Kubernetes secrets. Which might be somewhat confusing.
 
-In the example repository you will find both examples for ESO connections with
-AWS Secrets Manager and with SSM Parameter Store.
+In the example repository you will find both examples for External Secrets
+Operator connections with AWS Secrets Manager and with SSM Parameter Store.
 
 ## 04 - Crossplane
 
@@ -280,7 +280,7 @@ and has a different architecture so I left this one out.
 
 ## Conclusion
 
-It helped me to play with knowledge I learn from conferences like Kubecon. You can do as well,
+It helped me to play with knowledge I learned from conferences like Kubecon. You can do as well,
 by using [the example repository](https://github.com/FrederiqueRetsema/Kubecon26-example-repo).
 
 Have fun!
