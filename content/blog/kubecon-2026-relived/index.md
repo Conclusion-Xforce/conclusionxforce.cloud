@@ -179,16 +179,21 @@ that says:
 
 ```error
 failed to create the resource: [...] creating Secrets Manager Secret
-(kubecon26/examples/04-crossplane/demo-secret): operation error Secrets Manager: CreateSecret,
-https response error StatusCode: 400, RequestID: 1ab23456-7890-1cde-fgh2-34i5678jkl9m,
-InvalidRequestException: You can't create this secret because a secret with this name is already
-scheduled for deletion.
+(kubecon26/examples/04-crossplane/demo-secret): operation error Secrets
+Manager: CreateSecret, https response error StatusCode: 400, RequestID:
+1ab23456-7890-1cde-fgh2-34i5678jkl9m, InvalidRequestException: You can't
+create this secret because a secret with this name is already scheduled
+for deletion.
 ```
 
 This can be solved by using the AWS CLI:
 
 ```bash
-aws secretsmanager delete-secret --secret-id kubecon26/examples/04-crossplane/demo-secret --force-delete-without-recovery --region eu-west-1 --profile your-profile
+aws secretsmanager delete-secret \
+  --secret-id kubecon26/examples/04-crossplane/demo-secret \
+  --force-delete-without-recovery \
+  --region eu-west-1 \
+  --profile your-profile
 ```
 
 ### Crossplane CLI
