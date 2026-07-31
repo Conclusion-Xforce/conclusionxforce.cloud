@@ -39,7 +39,8 @@ and after merge the GitOps controller can deploy the new desired state.
 
 ## Why dependency updates are hard at scale
 
-For a single application, manually updating dependencies might not feel like a big problem.
+For a single application, manually updating dependencies
+might not feel like a big problem.
 
 But platform teams usually do not manage one application.
 They manage multiple repositories, multiple environments,
@@ -58,9 +59,11 @@ Think about questions like:
 
 The challenge is not just updating a version number.
 
-The challenge is doing it consistently, safely and repeatedly across many repositories.
+The challenge is doing it consistently, safely and repeatedly
+across many repositories.
 
-Renovate helps by turning dependency updates into a standard pull request workflow.
+Renovate helps by turning dependency updates into a
+standard pull request workflow.
 
 ## The GitOps update flow
 
@@ -91,7 +94,8 @@ To make this practical, I created a small demo repository:
 
 https://github.com/jeroenvandelockand/renovate-gitops
 
-The goal of the demo is to show Renovate updating different types of GitOps dependencies:
+The goal of the demo is to show Renovate updating different types
+of GitOps dependencies:
 
 * a container image in a Kubernetes manifest
 * an image tag in a Helm `values.yaml` file
@@ -170,21 +174,26 @@ The Renovate configuration lives in the root of the repository.
 
 There are a few important choices here.
 
-First, the configuration extends `config:recommended`. This provides a good baseline configuration.
+First, the configuration extends `config:recommended`.
+This provides a good baseline configuration.
 
 Second, the Dependency Dashboard is enabled.
-This gives a central overview of detected updates and updates that require approval.
+This gives a central overview of detected updates and
+updates that require approval.
 ![Dependency Dashboard](DependencyDashboard.png)
 
-Third, explicit file patterns are configured for the GitOps examples. This tells
-Renovate where to look for Argo CD, Kubernetes and Helm values files.
+Third, explicit file patterns are configured
+for the GitOps examples. This tells
+Renovate where to look for Argo CD, Kubernetes
+and Helm values files.
 
 Fourth, GitOps related updates are grouped together.
 This keeps the demo clear, because Renovate creates one pull request
 for the GitOps dependency updates.
 
 Finally, major updates require approval through the Dependency Dashboard.
-This is useful because major updates often require more review than patch or minor updates.
+This is useful because major updates often require
+more review than patch or minor updates.
 
 ## Running Renovate with GitHub Actions
 
@@ -226,7 +235,8 @@ RENOVATE_TOKEN
 ```
 
 When the workflow runs, Renovate scans the repository,
-checks the dependencies and creates pull requests when updates are available.
+checks the dependencies and creates pull requests
+when updates are available.
 
 ## Example 1: Updating a Kubernetes container image
 
@@ -319,7 +329,8 @@ instead of hidden manual edits.
 
 ## Example 3: Updating an Argo CD application
 
-The third example is an Argo CD `Application` that references a Helm chart.
+The third example is an Argo CD `Application` that references
+a Helm chart.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -395,13 +406,16 @@ and updates that require approval.
 
 In this demo, the first visible result was the Dependency Dashboard issue.
 
-At first, it looked like Renovate was only creating an issue and no pull request.
+At first, it looked like Renovate was only creating an
+issue and no pull request.
 But that was because a major update required approval.
 
-After approving the update and running Renovate again, Renovate created the pull requests.
+After approving the update and running Renovate again,
+Renovate created the pull requests.
 
 This is an important lesson: the Dependency Dashboard is not an error.
-It is part of the workflow, especially when approval rules are configured.
+It is part of the workflow, especially when approval
+rules are configured.
 
 ## The result
 
@@ -420,7 +434,8 @@ gitops/argocd/nginx-application.yaml
 gitops/helm/podinfo/values.yaml
 ```
 
-The pull request contained the proposed version changes and release information.
+The pull request contained the proposed version changes
+and release information.
 
 That is the core value of Renovate in a GitOps environment.
 
@@ -428,12 +443,15 @@ It turns version drift into reviewable pull requests.
 
 ## Why this matters for platform engineering
 
-From a platform engineering perspective, Renovate is more than a dependency update tool.
+From a platform engineering perspective,
+Renovate is more than a dependency update tool.
 
 It helps create a standard operating model for dependency maintenance.
 
-Without a standard approach, every team solves dependency updates differently.
-Some teams update frequently. Some teams only update when something breaks.
+Without a standard approach, every team solves
+dependency updates differently.
+Some teams update frequently.
+Some teams only update when something breaks.
 Some teams do not know which versions they are running.
 
 That creates risk and inconsistency.
@@ -456,14 +474,17 @@ Controlled continuous updates
 
 This reduces manual work and makes updates visible.
 
-It also helps teams avoid large upgrade moments where months of dependency
+It also helps teams avoid large upgrade moments
+where months of dependency
 changes need to be handled at once.
 
-Small, continuous updates are easier to review than large, delayed upgrades.
+Small, continuous updates are easier to review than large,
+delayed upgrades.
 
 ## Conclusion
 
-Dependency management is one of those tasks that is easy to underestimate.
+Dependency management is one of those tasks that is
+easy to underestimate.
 
 In Kubernetes and GitOps environments, dependencies are everywhere:
 
@@ -485,11 +506,12 @@ For platform teams, it creates consistency.
 For security teams, it improves response time.
 For operations teams, it reduces risky upgrade moments.
 
-That makes Renovate a strong addition to a modern GitOps and platform engineering workflow.
+That makes Renovate a strong addition to a
+modern GitOps and platform engineering workflow.
 
 The demo repository is available here:
 
-[Conclusion Xforce](https://github.com/jeroenvandelockand/renovate-gitops)
+[Conclusion Xforce](https://github.com/jeroenvandelockand/renovate-gitops/)
 
 If you want to engage with us regarding your platform automation challenges,
 please reach out to Iliass Laghmouchi or Mark Dudock, our account
