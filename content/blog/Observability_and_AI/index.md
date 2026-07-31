@@ -27,6 +27,7 @@ The blogpost can be found here:
 Feel free to interact and challenge!
 
 ## What is the Dynatrace Community?
+
 The Dynatrace Community is a peer-support forum where users, developers,
 and Dynatrace product experts connect,
 ask technical questions,
@@ -38,10 +39,11 @@ I like answering questions from other users
 with my own solution and I use it as a knowledge
 databank if I want to have quick
 or hands-on answers.
-Do you also want an account? You can create one here: 
+Do you also want an account? You can create one here:
 [Dynatrace Community](https://community.dynatrace.com/)
 
 ## Who are the Dynatrace Community DynaMights?
+
 I like to call us the human web crawlers of the community.
 If you ask a question or submit an idea,
 odds are high

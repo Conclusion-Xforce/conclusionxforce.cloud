@@ -13,25 +13,37 @@ draft: false
 GitOps has become a common way of managing Kubernetes environments.
 
 The idea is simple: Git is the source of truth.
-The desired state of the platform is stored in a repository, and tools like Argo CD or Flux continuously reconcile that desired state to the cluster.
+The desired state of the platform is stored in a repository,
+and tools like Argo CD or Flux continuously reconcile that
+desired state to the cluster.
 
-This gives teams a controlled and auditable deployment model. Every change goes through Git. Every change can be reviewed. Every change can be traced.
+This gives teams a controlled and auditable deployment model.
+Every change goes through Git. Every change can be reviewed.
+Every change can be traced.
 
 But GitOps does not automatically solve dependency management.
 
-Container images still become outdated. Helm charts still release new versions. GitHub Actions still need updates. Terraform providers and modules still move forward. Security fixes still need to be applied.
+Container images still become outdated. Helm charts still release new versions.
+GitHub Actions still need updates. Terraform providers and modules still move forward.
+Security fixes still need to be applied.
 
 Without automation, someone still needs to manually check all these versions.
 
 That is where Renovate fits in.
 
-Renovate scans repositories for dependencies and creates pull requests when updates are available. In a GitOps environment this works especially well, because updates are proposed as normal Git changes. The team can review the pull request, CI can validate it, and after merge the GitOps controller can deploy the new desired state.
+Renovate scans repositories for dependencies and creates pull
+requests when updates are available. In a GitOps environment this works
+especially well, because updates are proposed as normal Git changes.
+The team can review the pull request, CI can validate it,
+and after merge the GitOps controller can deploy the new desired state.
 
 ## Why dependency updates are hard at scale
 
 For a single application, manually updating dependencies might not feel like a big problem.
 
-But platform teams usually do not manage one application. They manage multiple repositories, multiple environments, multiple clusters and multiple teams.
+But platform teams usually do not manage one application.
+They manage multiple repositories, multiple environments,
+multiple clusters and multiple teams.
 
 That means dependency management quickly becomes operational work.
 
@@ -103,7 +115,9 @@ gitops/
       values.yaml
 ```
 
-The example is intentionally small. The point is not to deploy a production application. The point is to make the Renovate workflow visible and easy to understand.
+The example is intentionally small. The point is not to deploy a
+production application. The point is to make the Renovate workflow
+visible and easy to understand.
 
 ## Renovate configuration
 
@@ -158,14 +172,19 @@ There are a few important choices here.
 
 First, the configuration extends `config:recommended`. This provides a good baseline configuration.
 
-Second, the Dependency Dashboard is enabled. This gives a central overview of detected updates and updates that require approval.
+Second, the Dependency Dashboard is enabled.
+This gives a central overview of detected updates and updates that require approval.
 ![Dependency Dashboard](DependencyDashboard.png)
 
-Third, explicit file patterns are configured for the GitOps examples. This tells Renovate where to look for Argo CD, Kubernetes and Helm values files.
+Third, explicit file patterns are configured for the GitOps examples. This tells
+Renovate where to look for Argo CD, Kubernetes and Helm values files.
 
-Fourth, GitOps related updates are grouped together. This keeps the demo clear, because Renovate creates one pull request for the GitOps dependency updates.
+Fourth, GitOps related updates are grouped together.
+This keeps the demo clear, because Renovate creates one pull request
+for the GitOps dependency updates.
 
-Finally, major updates require approval through the Dependency Dashboard. This is useful because major updates often require more review than patch or minor updates.
+Finally, major updates require approval through the Dependency Dashboard.
+This is useful because major updates often require more review than patch or minor updates.
 
 ## Running Renovate with GitHub Actions
 
@@ -197,7 +216,8 @@ jobs:
 
 This makes the demo easy to run.
 
-Instead of waiting for the hosted Renovate app schedule, I can go to GitHub Actions and manually start the workflow.
+Instead of waiting for the hosted Renovate app schedule,
+I can go to GitHub Actions and manually start the workflow.
 
 The repository needs a GitHub token stored as an Actions secret:
 
@@ -205,7 +225,8 @@ The repository needs a GitHub token stored as an Actions secret:
 RENOVATE_TOKEN
 ```
 
-When the workflow runs, Renovate scans the repository, checks the dependencies and creates pull requests when updates are available.
+When the workflow runs, Renovate scans the repository,
+checks the dependencies and creates pull requests when updates are available.
 
 ## Example 1: Updating a Kubernetes container image
 
@@ -240,7 +261,8 @@ The dependency here is the container image:
 image: nginx:1.27.0
 ```
 
-Renovate detects that the image tag is outdated and creates a pull request to update it.
+Renovate detects that the image tag is outdated and
+creates a pull request to update it.
 
 In the demo, Renovate proposed this update:
 
@@ -251,7 +273,9 @@ In the demo, Renovate proposed this update:
 
 This is a common GitOps use case.
 
-The desired version of the workload is stored in Git. Renovate proposes the new version. After review and merge, the GitOps controller can apply the change to the cluster.
+The desired version of the workload is stored in Git.
+Renovate proposes the new version. After review and merge,
+the GitOps controller can apply the change to the cluster.
 
 ## Example 2: Updating Helm values
 
@@ -263,7 +287,8 @@ image:
   tag: 6.6.0
 ```
 
-This pattern is common when teams manage application versions through environment specific values files.
+This pattern is common when teams manage application versions
+through environment specific values files.
 
 For example:
 
@@ -277,7 +302,8 @@ environments/
     values.yaml
 ```
 
-Renovate detects the image repository and tag, then proposes a version update.
+Renovate detects the image repository and tag,
+then proposes a version update.
 
 In the demo, Renovate proposed this update:
 
@@ -288,7 +314,8 @@ In the demo, Renovate proposed this update:
 +  tag: 6.14.0
 ```
 
-This makes image updates visible through pull requests instead of hidden manual edits.
+This makes image updates visible through pull requests
+instead of hidden manual edits.
 
 ## Example 3: Updating an Argo CD application
 
@@ -355,21 +382,26 @@ Renovate detected a newer major version and created a separate pull request:
 
 This is useful because CI/CD workflows are also dependencies.
 
-If the pipeline is part of the delivery platform, it should be maintained like any other dependency.
+If the pipeline is part of the delivery platform,
+it should be maintained like any other dependency.
 
 ## The Dependency Dashboard
 
 One of the useful Renovate features is the Dependency Dashboard.
 
-The Dependency Dashboard is created as a GitHub issue. It gives an overview of detected updates, pending pull requests and updates that require approval.
+The Dependency Dashboard is created as a GitHub issue.
+It gives an overview of detected updates, pending pull requests
+and updates that require approval.
 
 In this demo, the first visible result was the Dependency Dashboard issue.
 
-At first, it looked like Renovate was only creating an issue and no pull request. But that was because a major update required approval.
+At first, it looked like Renovate was only creating an issue and no pull request.
+But that was because a major update required approval.
 
 After approving the update and running Renovate again, Renovate created the pull requests.
 
-This is an important lesson: the Dependency Dashboard is not an error. It is part of the workflow, especially when approval rules are configured.
+This is an important lesson: the Dependency Dashboard is not an error.
+It is part of the workflow, especially when approval rules are configured.
 
 ## The result
 
@@ -400,7 +432,9 @@ From a platform engineering perspective, Renovate is more than a dependency upda
 
 It helps create a standard operating model for dependency maintenance.
 
-Without a standard approach, every team solves dependency updates differently. Some teams update frequently. Some teams only update when something breaks. Some teams do not know which versions they are running.
+Without a standard approach, every team solves dependency updates differently.
+Some teams update frequently. Some teams only update when something breaks.
+Some teams do not know which versions they are running.
 
 That creates risk and inconsistency.
 
@@ -422,7 +456,8 @@ Controlled continuous updates
 
 This reduces manual work and makes updates visible.
 
-It also helps teams avoid large upgrade moments where months of dependency changes need to be handled at once.
+It also helps teams avoid large upgrade moments where months of dependency
+changes need to be handled at once.
 
 Small, continuous updates are easier to review than large, delayed upgrades.
 
@@ -454,6 +489,8 @@ That makes Renovate a strong addition to a modern GitOps and platform engineerin
 
 The demo repository is available here:
 
-https://github.com/jeroenvandelockand/renovate-gitops
+[Conclusion Xforce](https://github.com/jeroenvandelockand/renovate-gitops)
 
-If you want to engage with us regarding your platform automation challenges, please reach out to Iliass Laghmouchi or Mark Dudock, our account managers at [Conclusion Xforce](https://www.conclusionxforce.nl/).
+If you want to engage with us regarding your platform automation challenges,
+please reach out to Iliass Laghmouchi or Mark Dudock, our account
+managers at [Conclusion Xforce](https://www.conclusionxforce.nl/).
