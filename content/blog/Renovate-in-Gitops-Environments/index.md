@@ -92,7 +92,7 @@ That makes dependency updates visible and auditable.
 
 To make this practical, I created a small demo repository:
 
-https://github.com/jeroenvandelockand/renovate-gitops
+[https://github.com/jeroenvandelockand/renovate-gitops](https://github.com/jeroenvandelockand/renovate-gitops)
 
 The goal of the demo is to show Renovate updating different types
 of GitOps dependencies:
