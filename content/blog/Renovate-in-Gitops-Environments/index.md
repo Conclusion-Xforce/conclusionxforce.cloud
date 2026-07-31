@@ -511,7 +511,7 @@ modern GitOps and platform engineering workflow.
 
 The demo repository is available here:
 
-[Conclusion Xforce](https://github.com/jeroenvandelockand/renovate-gitops/)
+[https://github.com/jeroenvandelockand/renovate-gitops/](https://github.com/jeroenvandelockand/renovate-gitops/)
 
 If you want to engage with us regarding your platform automation challenges,
 please reach out to Iliass Laghmouchi or Mark Dudock, our account
