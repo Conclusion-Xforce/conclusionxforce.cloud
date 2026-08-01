@@ -16,7 +16,7 @@ focus group. I love to share my knowledge via presentations and blogs.
 
 Once a year I'm one of the presenters of a presentation about new developments
 in AWS, based on AWS re:Invent. Last year I also gave a presentation about the
-presentations we saw on KubeCon 2025 in London.
+presentations we saw on KubeCon 2026 in Amsterdam.
 
 For more information about the presentations that Conclusion Xforce is about to
 give, see our [meetup page](https://www.meetup.com/nl-NL/xforce-kennissessies/).
@@ -26,11 +26,13 @@ give, see our [meetup page](https://www.meetup.com/nl-NL/xforce-kennissessies/).
 I wrote a few blogs on this site already, and there is more to come! Read for
 example the blogs about:
 
+* [Kyverno exercises and solutions, in old and new format](http://conclusionxforce.cloud/blog/kyverno-exercises/)
 * [Kubecon 2026 relived](http://conclusionxforce.cloud/blog/kubecon-2026-relived/)
 * [The European Sovereign Cloud, more complex than it seems?](https://conclusionxforce.cloud/blog/european-sovereign-cloud/)
 * [AWS Nuke with AWS Step Functions](https://conclusionxforce.cloud/blog/aws-nuke-with-aws-stepfunctions/),
+* [Azure monitor alerts and Dynatrace](https://conclusionxforce.cloud/blog/azure-alerts-dynatrace/).
+* [Least Privileged access in ArgoCD](https://conclusionxforce.cloud/blog/ephemeral-access-extension-plugin-for-servicenow/)
 * [ArgoCD SSO based on AWS Cognito Userpools](https://conclusionxforce.cloud/blog/argocd-sso-based-on-aws-cognito-userpools/)
-* [Azure monitor alerts to Dynatrace](https://conclusionxforce.cloud/blog/azure-alerts-dynatrace/).
 
 In the past I also wrote
 [blogs for Conclusion AMIS](https://technology.amis.nl/author/frederique-retsemaamis-nl/).
