@@ -38,7 +38,7 @@ Ansible Automation Platform.
 
 Before I started, I honestly thought:
 
-> "I already know Ansible."
+"I already know Ansible."
 
 However, during my preparation, I quickly discovered that the CLI is
 really only the beginning.
