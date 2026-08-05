@@ -8,8 +8,6 @@ tags: [Red Hat, Ansible Automation Platform, EX374, Ansible]
 draft: false
 ---
 
-# My Journey to the Ansible Automation Platform EX374 Certification
-
 ## My Motivation for the EX374 Certification
 
 My motivation for pursuing the EX374 certification stems from my interest
