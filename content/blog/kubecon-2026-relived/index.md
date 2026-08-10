@@ -3,7 +3,7 @@ title: Kubecon 2026 relived
 subtitle: The nicest presentation of Kubecon in a sandbox Kubernetes cluster
 description: I created a sandbox Kubernetes cluster in AWS with examples from Kubecon presentations
 authors: ['Frederique Retsema']
-date: '2026-08-10'
+date: '2026-06-22'
 tags: ['Cloud Native', 'Public Cloud', 'AWS']
 draft: false
 ---

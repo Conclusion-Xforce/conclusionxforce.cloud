@@ -3,7 +3,7 @@ title: Kyverno exercises and solutions, in old and new format
 subtitle: Get hands-on experience with Kyverno
 description: Kyverno exercises and solutions
 authors: [Frederique Retsema]
-date: '2026-08-01'
+date: '2026-08-10'
 tags: [Kyverno, Cloud Native]
 draft: false
 ---
