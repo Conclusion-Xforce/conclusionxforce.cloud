@@ -106,7 +106,7 @@ Installation and policy to change new namespaces:
   new CRDs) way"
 * Create test sets for all Kyverno resources
 
-### Other tests
+### Other challenges
 
 * In the Dynatrace Community someone also made
   [a challenge](https://community.dynatrace.com/t5/Challenges/%EF%B8%8F-Take-the-Lex-Imperfecta-Challenge/ba-p/301931)
