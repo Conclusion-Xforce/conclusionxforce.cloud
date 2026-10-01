@@ -7,6 +7,7 @@ with [Hugo](https://gohugo.io/) and the
 ## Local setup
 
 Packages:
+
 ```bash
 sudo dnf install git gcc gcc-c++ golang
 ```
@@ -28,6 +29,7 @@ source .venv/bin/activate
 ```
 
 Upgrade packaging tools:
+
 ```bash
 pip install --upgrade pip setuptools wheel
 ```
