@@ -100,6 +100,13 @@ Fork the repository and open a pull request against `main`. Pull requests are
 linted automatically — make sure your Markdown passes `markdownlint-cli2`
 before pushing.
 
+Example
+
+```bash
+npx --yes markdownlint-cli2@0.18.1 \
+  content/blog/Certificate-Lifecycle-as-Code/index.md
+```
+
 ## License
 
 All content in this repository is licensed under the
