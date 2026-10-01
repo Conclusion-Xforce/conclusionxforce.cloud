@@ -222,7 +222,7 @@ Policy as Code transformed how we enforce governance.
 
 Certificate Lifecycle as Code applies the same proven principles to certificate management.
 
-By treating certificates as declarative, version-controlled platform resources, organizations can reduce operational risk, improve governance, increase visibility, and provide a better experience for development teams.
+By treating certificates as declarative, version controlled platform resources, organizations can reduce operational risk, improve governance, increase visibility, and provide a better experience for development teams.
 
 The goal is not simply to automate certificate renewal.
 
