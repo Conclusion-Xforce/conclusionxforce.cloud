@@ -6,6 +6,34 @@ with [Hugo](https://gohugo.io/) and the
 
 ## Local setup
 
+Packages:
+
+```bash
+sudo dnf install git gcc gcc-c++ golang
+```
+
+It's recommended  to use a dedicated virtual environment.
+
+Using pyenv:
+
+```bash
+pyenv install 3.12.11
+pyenv local 3.12.11
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Upgrade packaging tools:
+
+```bash
+pip install --upgrade pip setuptools wheel
+```
+
 **Prerequisites:** Hugo 0.145.0. Install it (and pin the version) via pip:
 
 ```bash
@@ -71,6 +99,13 @@ directory and update the frontmatter.
 Fork the repository and open a pull request against `main`. Pull requests are
 linted automatically — make sure your Markdown passes `markdownlint-cli2`
 before pushing.
+
+Example
+
+```bash
+npx --yes markdownlint-cli2@0.18.1 \
+  content/blog/Certificate-Lifecycle-as-Code/index.md
+```
 
 ## License
 
