@@ -8,17 +8,23 @@ tags: [Platform Engineering, Security, GitOps, Kubernetes, Certificates, Cloud N
 draft: false
 ---
 
+Modern platforms increasingly embrace Infrastructure as Code, Policy as Code,
+and GitOps. Yet many organizations still manage one of their most critical
+security assets manually: certificates.
 
+Certificates often live in spreadsheets, ticketing systems, email reminders,
+or someone's personal calendar. Renewals are performed manually, ownership is
+unclear, and expiration events are only discovered when something breaks in
+production.
 
-Modern platforms increasingly embrace Infrastructure as Code, Policy as Code, and GitOps. Yet many organizations still manage one of their most critical security assets manually: certificates.
-
-Certificates often live in spreadsheets, ticketing systems, email reminders, or someone's personal calendar. Renewals are performed manually, ownership is unclear, and expiration events are only discovered when something breaks in production.
-
-In this article, I introduce **Certificate Lifecycle as Code**, a demonstration project that explores how certificate management can be treated as a fully declarative, automated, and auditable process.
+In this article, I introduce **Certificate Lifecycle as Code**, a demonstration
+project that explores how certificate management can be treated as a fully
+declarative, automated, and auditable process.
 
 ## The Problem
 
-Many organizations have matured their cloud-native operating model but still rely on manual certificate processes.
+Many organizations have matured their cloud-native operating model but still
+rely on manual certificate processes.
 
 Common challenges include:
 
@@ -29,13 +35,17 @@ Common challenges include:
 - No clear audit trail
 - High operational overhead
 
-The larger the platform footprint becomes, the more difficult it is to maintain a complete view of certificate usage across environments, clusters, applications, APIs, ingress controllers, service meshes, and external integrations.
+The larger the platform footprint becomes, the more difficult it is to maintain
+a complete view of certificate usage across environments, clusters,
+applications, APIs, ingress controllers, service meshes, and external
+integrations.
 
 Certificates become operational debt.
 
 ## Applying Cloud Native Principles
 
-When we look at modern Platform Engineering practices, we already know how to solve similar challenges.
+When we look at modern Platform Engineering practices, we already know how to
+solve similar challenges.
 
 We use:
 
@@ -49,13 +59,16 @@ So why not apply the same principles to certificates?
 
 This is the core idea behind **Certificate Lifecycle as Code**:
 
-> Treat certificates as managed platform resources that are defined, governed, and automated through code.
+> Treat certificates as managed platform resources that are defined, governed,
+> and automated through code.
 
-Instead of managing individual certificates manually, the desired state becomes declarative and version controlled.
+Instead of managing individual certificates manually, the desired state becomes
+declarative and version controlled.
 
 ## What Is Certificate Lifecycle as Code?
 
-Certificate Lifecycle as Code shifts certificate management from an operational activity to a platform capability.
+Certificate Lifecycle as Code shifts certificate management from an operational
+activity to a platform capability.
 
 Rather than asking:
 
@@ -77,7 +90,8 @@ A declarative configuration defines:
 
 Git becomes the source of truth.
 
-Changes are introduced through pull requests, reviewed through standard engineering processes, and audited automatically.
+Changes are introduced through pull requests, reviewed through standard
+engineering processes, and audited automatically.
 
 ## Architecture Overview
 
@@ -108,7 +122,8 @@ In reality it is a shared concern between:
 - Application teams
 - Operations teams
 
-Platform Engineering provides an opportunity to standardize certificate consumption and management through reusable platform patterns.
+Platform Engineering provides an opportunity to standardize certificate
+consumption and management through reusable platform patterns.
 
 Benefits include:
 
@@ -132,7 +147,8 @@ can be answered immediately.
 
 ### Better Developer Experience
 
-Application teams should consume certificates as platform services rather than managing certificate lifecycles themselves.
+Application teams should consume certificates as platform services rather than
+managing certificate lifecycles themselves.
 
 This aligns with Golden Path principles and self-service platform capabilities.
 
@@ -147,9 +163,11 @@ Policy validation can ensure that:
 
 ## GitOps for Security Operations
 
-One of the most interesting aspects of this approach is how naturally it aligns with GitOps.
+One of the most interesting aspects of this approach is how naturally it aligns
+with GitOps.
 
-The same patterns we use for deploying applications can be applied to certificate management.
+The same patterns we use for deploying applications can be applied to
+certificate management.
 
 Desired state:
 
@@ -164,7 +182,8 @@ certificate:
 
 Operational state is continuously reconciled against the declared state.
 
-This creates a predictable and repeatable operating model that scales much better than manual processes.
+This creates a predictable and repeatable operating model that scales much
+better than manual processes.
 
 ## Lessons Learned
 
@@ -174,7 +193,8 @@ While building this demonstration project, several observations stood out:
 
 Modern security teams increasingly rely on automation and platform capabilities.
 
-Certificate management is a strong example where security requirements and platform engineering practices intersect.
+Certificate management is a strong example where security requirements and
+platform engineering practices intersect.
 
 ### Visibility Matters
 
@@ -193,11 +213,13 @@ Centralized lifecycle management improves visibility dramatically.
 
 Governance should not be an additional process layer.
 
-The best platform experiences make governance automatic through policy validation and platform guardrails.
+The best platform experiences make governance automatic through policy
+validation and platform guardrails.
 
 ## Future Opportunities
 
-The demo repository focuses on the foundational concepts, but the same approach can be extended further.
+The demo repository focuses on the foundational concepts, but the same approach
+can be extended further.
 
 Examples include:
 
@@ -222,7 +244,9 @@ Policy as Code transformed how we enforce governance.
 
 Certificate Lifecycle as Code applies the same proven principles to certificate management.
 
-By treating certificates as declarative, version controlled platform resources, organizations can reduce operational risk, improve governance, increase visibility, and provide a better experience for development teams.
+By treating certificates as declarative, version controlled platform resources,
+organizations can reduce operational risk, improve governance, increase
+visibility, and provide a better experience for development teams.
 
 The goal is not simply to automate certificate renewal.
 
